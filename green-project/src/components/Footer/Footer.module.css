@@ -1,0 +1,12 @@
+  /* Footer */
+
+  .footer {
+    width: auto;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: rgb(25, 43, 43);
+    background-color: rgb(227, 226, 226);
+}
