@@ -1,0 +1,64 @@
+{
+    "types": [
+        "Vertical garden",
+        "Roof garden",
+        "Interior landscaping",
+        "Exterior landscaping"
+    ],
+    " projects": [
+        {
+            "id": 1,
+            "type": "Vertical garden",
+            "creatorName": "Petar Petrov",
+            "imageUtl": "http://st.hzcdn.com/simgs/4491f87c04874460_8-2470/contemporary-patio.jpg",
+            "designStage": "Conceptual design",
+            "description": "Vertical garden in interior",
+            "area": "Interior"
+        },
+        {
+            "id": 2,
+            "type": "Vertical garden",
+            "creatorName": "Stas Petrov",
+            "imageUtl": "http://cdn.home-designing.com/wp-content/uploads/2013/03/Patrick-Blanc-Interior-vertical-garden-and-aquarium-workspace.jpeg",
+            "designStage": "Conceptual design",
+            "description": "Vertical garden in interior",
+            "area": "Interior"
+        },
+        {
+            "id": 3,
+            "type": "Roof garden",
+            "creatorName": "Ivan Petrov",
+            "imageUtl": "https://media.architecturaldigest.com/photos/56f99e6b68aa959e79f3527f/master/pass/living-roofs-rooftop-gardens-book-02.jpg",
+            "designStage": "Conceptual design",
+            "description": "Roof garden of a public building ",
+            "area": "Exterior in mountain area"
+        },
+        {
+            "id": 4,
+            "type": "Interior garden",
+            "creatorName": "Petar Ivanov",
+            "imageUtl": "https://live.staticflickr.com/7034/6520096547_c6311f3a21_b.jpg",
+            "designStage": "Conceptual design",
+            "description": "Interior landscaping of a public building ",
+            "area": "Interior landscaping"
+        },
+        {
+            "id": 5,
+            "type": "Exterior garden",
+            "creatorName": "Ivan Ivanov",
+            "imageUtl": "https://foyr.com/learn/wp-content/uploads/2019/03/Why-do-you-need-a-home-garden.jpg",
+            "designStage": "Conceptual design",
+            "description": "Exterior home landscaping",
+            "area": "Exterior in mountain area"
+        },
+        {
+            "id": 6,
+            "type": "Exterior garden",
+            "creatorName": "Ivan Dimitrov",
+            "imageUtl": "https://cdn.mos.cms.futurecdn.net/cngiWrYyC5d22in8GQTXBJ.jpg",
+            "designStage": "Conceptual design",
+            "description": "Exterior home landscaping",
+            "area": "Exterior in sea area"
+        }
+    ]
+}

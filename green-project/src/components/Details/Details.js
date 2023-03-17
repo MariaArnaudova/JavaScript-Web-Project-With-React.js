@@ -1,4 +1,5 @@
 import styles from './Details.module.css';
+import image from '../../public/images/inerior1.jpg';
 
 export const Details = () => {
     return(
@@ -8,7 +9,7 @@ export const Details = () => {
                 <h2 className={styles["project-title"]}>Interior decor</h2>
                 <div className={styles["project-divider"]}></div>
                 <div className={styles["project-details"]}>
-                    <img className={styles["details-image details"]} src="images/inerior1.jpg" alt="Details Inerior decor"/>
+                    <img className={styles["details-image details"]} src={image} alt="Details Inerior decor"/>
                     <div className={styles["details-info"]}>
                         <h2>Green details</h2>
                         <p className={styles["details-descriptions"]}>Description:
