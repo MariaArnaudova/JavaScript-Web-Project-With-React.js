@@ -10,10 +10,16 @@ function App() {
     <div className="App">
       <Header />
       <main id="main-content">
-        <Home/>
-
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Rgister />} />
+          <Route path='/addProject' element={<AddProject />} />
+          <Route path='/projects' element={<Projects />} />
+          <Route path='/projects/:projectId' element={<Details />} />
+        </Routes>
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
