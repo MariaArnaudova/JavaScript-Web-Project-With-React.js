@@ -13,11 +13,11 @@ export const AddProject = ({
         designStage: '',
         imageUrl: '',
         area: '',
-        plants: [],
+        plants: '',
     });
 
    const onChangeHandler = (e) => {
-        setValues(state => ({ ...state, [e.target.name]: [e.target.value] }))
+        setValues(state => ({ ...state, [e.target.name]: e.target.value }))
     };
 
     const onSubmit = (e) => {
@@ -61,7 +61,7 @@ export const AddProject = ({
                     </div>
                     <div className={styles["form-group"]}>
                         <label htmlFor="plants">Decor plants</label>
-                        <input type="text" onChange={onChangeHandler} name="" id="plants" placeholder="Decor plants" />
+                        <input type="text" onChange={onChangeHandler} name="plants" id="plants" placeholder="Decor plants" />
                     </div>
                     <button className={styles["button-idea"]} type="submit">Add Idea</button>
                 </form>

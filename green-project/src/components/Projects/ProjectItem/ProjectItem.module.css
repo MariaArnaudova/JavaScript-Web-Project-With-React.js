@@ -36,15 +36,18 @@
 }
 
 .image-info {
-    width: 40%;
-    height: 30%;
+    margin-right: 40px;
     border-radius: 6px 6px 6px 6px;
-    width: 35%;
+    width: 30%;
     height: 55%;
     overflow: hidden;
     box-shadow: 43px 43px 15px -37px rgba(0, 0, 0, 0.52);
     -webkit-box-shadow: 43px 43px 15px -37px rgba(0, 0, 0, 0.52);
     -moz-box-shadow: 43px 43px 15px -37px rgba(0, 0, 0, 0.52);
+}
+
+.image-info:hover {
+    transform: scale(1.2);
 }
 
 .flex-content .info {

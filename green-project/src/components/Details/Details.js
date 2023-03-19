@@ -1,39 +1,65 @@
 import styles from './Details.module.css';
-import image from '../../public/images/inerior1.jpg';
+// import { useEffect, useState } from 'react';
+// import { useParams } from 'react-router-dom';
+// import image from '../../public/images/inerior1.jpg';
+// const baseUrl = 'http://localhost:3030/jsonstore/projects';
 
-export const Details = () => {
-    return(
+export const Details = ({
+    _id,
+    description,
+    type,
+    creatorName,
+    designStage,
+    imageUrl,
+    area,
+    plants,
+    // selectedProject
+}) => {
+    // const [projectDetails, setDetails] = useState({});
+    // const { projectId } = useParams();
+
+    // useEffect(() => {
+    //     fetch(`${baseUrl}/${projectId}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             setDetails(data);
+    //             console.log(projectDetails)
+    //         })
+    // }, [])
+
+    return (
         // <!-- Details page -->
+        <>
         <section className={styles["details"]}>
             <div className={styles["project"]}>
-                <h2 className={styles["project-title"]}>Interior decor</h2>
+                <h2 className={styles["project-title"]}>{type} decor</h2>
                 <div className={styles["project-divider"]}></div>
                 <div className={styles["project-details"]}>
-                    <img className={styles["details-image details"]} src={image} alt="Details Inerior decor"/>
+                    <img className={styles["details-image details"]} src={imageUrl} alt="Details Inerior decor" />
                     <div className={styles["details-info"]}>
                         <h2>Green details</h2>
                         <p className={styles["details-descriptions"]}>Description:
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Officia ratione consequatur rem beatae.
+                            {description}.
                         </p>
                         <p className={styles["details-type"]}>
                             Decor type:
-                            Interior;
+                            {type}
                         </p>
                         <p className={styles["details-creator"]}>
                             Decor creator:
-                            Lorem ipsum ;
+                            {creatorName}
                         </p>
                         <p className={styles["details-area"]}>
                             Decor area:
-                            Marina;
+                            {area};
                         </p>
                         <p className={styles["details-designStage"]}>
                             Design stage:
-                            Idea project.
+                            {designStage}
                         </p>
                         <p className={styles["details-ideas"]}>
-                            Decor plants: Lorem ipsum dolor sit amet consectetur ...
+                            Decor plants: {plants}
 
                         </p>
                         <div className={styles["buttons-details"]}>
@@ -44,5 +70,6 @@ export const Details = () => {
                 </div>
             </div>
         </section>
+        </>
     )
 }
