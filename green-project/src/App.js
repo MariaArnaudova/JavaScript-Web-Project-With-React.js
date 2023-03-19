@@ -18,9 +18,6 @@ function App() {
     const navigate = useNavigate();
     const [projects, setProjects] = useState([]);
    
-    
-    // const [projectDetails, setDetails] = useState({});
-
     useEffect(() => {
         fetch(baseUrl)
             .then(res => res.json())
@@ -43,7 +40,24 @@ function App() {
 
         setProjects(state => [...state, result])
         navigate('/projects');
-    }
+    };
+
+    const [selectedProject, setSelectedProject] = useState(null);
+
+    const onDetailsClick = async (projectId) => {
+        const response = await fetch(`${baseUrl}/${projectId}`);
+        const result = await response.json();
+        console.log(result);
+        setSelectedProject(result);
+    };
+
+    const onProjectDeleteClick = async (projectId) => {
+        await fetch(`${baseUrl}/${projectId}`, { method: 'DELETE' });
+
+        setProjects(state => state.filter(x => x._id !== projectId));
+        setSelectedProject(null);
+    };
+
 
     return (
         <div className="App">
@@ -54,7 +68,7 @@ function App() {
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/create-project' element={<AddProject onCreateProjectSubmit={onCreateProjectSubmit} />} />
-                    <Route path='/projects' element={<Projects projects={projects}  />} />
+                    <Route path='/projects' element={<Projects projects={projects} selectedProject={selectedProject} onDetailsClick={onDetailsClick} onProjectDeleteClick={onProjectDeleteClick}/>} />
                     <Route path='/projects/:projectId' element={<Details  />} />
                 </Routes>
             </main>

@@ -13,7 +13,7 @@ export const Details = ({
     imageUrl,
     area,
     plants,
-    // selectedProject
+    onProjectDeleteClick,
 }) => {
     // const [projectDetails, setDetails] = useState({});
     // const { projectId } = useParams();
@@ -39,9 +39,7 @@ export const Details = ({
                     <img className={styles["details-image details"]} src={imageUrl} alt="Details Inerior decor" />
                     <div className={styles["details-info"]}>
                         <h2>Green details</h2>
-                        <p className={styles["details-descriptions"]}>Description:
-                            {description}.
-                        </p>
+                        <p className={styles["details-descriptions"]}>Description:{description}.</p>
                         <p className={styles["details-type"]}>
                             Decor type:
                             {type}
@@ -64,7 +62,7 @@ export const Details = ({
                         </p>
                         <div className={styles["buttons-details"]}>
                             <button className={styles["edit"]}>Edit Idea</button>
-                            <button className={styles["delete"]}>Delete Project</button>
+                            <button className={styles["delete"]} onClick={() => onProjectDeleteClick(_id)} >Delete Project</button>
                         </div>
                     </div>
                 </div>

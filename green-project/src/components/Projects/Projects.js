@@ -9,22 +9,24 @@ const baseUrl = 'http://localhost:3030/jsonstore/projects';
 
 export const Projects = ({
     projects,
+    onProjectDeleteClick,
+    selectedProject,
+    onDetailsClick,
 }) => {
 
-    const [selectedProject, setSelectedProject] = useState(null);
+    // const [selectedProject, setSelectedProject] = useState(null);
 
-    const onDetailsClick = async (projectId) => {
-        const response = await fetch(`${baseUrl}/${projectId}`);
-        const result = await response.json();
-        console.log(result);
-        setSelectedProject(result);
-    };
-    console.log(selectedProject);
-    console.log(onDetailsClick)
+    // const onDetailsClick = async (projectId) => {
+    //     const response = await fetch(`${baseUrl}/${projectId}`);
+    //     const result = await response.json();
+    //     console.log(result);
+    //     setSelectedProject(result);
+    // };
+
 
     return (
         <>
-            {selectedProject && <Details {...selectedProject} />}
+            {selectedProject && <Details {...selectedProject} onProjectDeleteClick={onProjectDeleteClick}/>}
             <div className={styles["projects"]}>
                 <h1>Landscape designs</h1>
 

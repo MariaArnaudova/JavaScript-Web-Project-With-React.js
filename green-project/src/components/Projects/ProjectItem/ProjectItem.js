@@ -4,20 +4,11 @@ import styles from './ProjectItem.module.css';
 
 export const ProjectItem = ({
     _id,
-    description,
     type,
     creatorName,
-    designStage,
     imageUrl,
-    area,
-    plants,
-     onDetailsClick
+    onDetailsClick,
 }) => {
-    // const [showDetails, setShowDetails] = useState(false);
-    // const onDetailsClick = (projectId) => {
-
-    //     setShowDetails(true);
-    // };
 
     return (
         <div className={styles["project-info"]}>
