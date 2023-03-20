@@ -10,6 +10,7 @@ import { Register } from './components/Register/Register';
 import { AddProject } from './components/AddProject/AddProject';
 import { Projects } from './components/Projects/Projects';
 import { Details } from './components/Details/Details';
+import {EditProject} from './components/EditProject/EditProject';
 
 const baseUrl = 'http://localhost:3030/jsonstore/projects';
 
@@ -58,6 +59,16 @@ function App() {
         setSelectedProject(null);
     };
 
+    const onEditClick = async(projectId)=> {
+        const response = await fetch(`${baseUrl}/${projectId}`);
+        const result = await response.json();
+        // navigate('/projects/:projectId')
+    }
+
+    const onProjectCloseClick = (projectId) => {
+        setSelectedProject(null);
+    }
+
 
     return (
         <div className="App">
@@ -68,8 +79,16 @@ function App() {
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/create-project' element={<AddProject onCreateProjectSubmit={onCreateProjectSubmit} />} />
-                    <Route path='/projects' element={<Projects projects={projects} selectedProject={selectedProject} onDetailsClick={onDetailsClick} onProjectDeleteClick={onProjectDeleteClick}/>} />
+                    <Route path='/projects' element={<Projects 
+                    projects={projects} 
+                    selectedProject={selectedProject} 
+                    onDetailsClick={onDetailsClick} 
+                    onProjectDeleteClick={onProjectDeleteClick}
+                    onProjectCloseClick={onProjectCloseClick}
+                    onEditClick ={onEditClick} 
+                    />} />
                     <Route path='/projects/:projectId' element={<Details  />} />
+                    <Route path='/projects/:projectId/edit' element={<EditProject />} />
                 </Routes>
             </main>
             <Footer />

@@ -1,8 +1,8 @@
 /* @import url('../../reset.css'); */
- 
- /* Details Page */
 
- .details {
+/* Details Page */
+
+.details {
     background-color: rgb(243, 241, 241);
 }
 
@@ -17,27 +17,34 @@
 }
 
 .project-details {
-    position: relative;
     width: auto;
     height: 70vh;
     display: flex;
     gap: 20px;
+    text-align: center;
     justify-content: center;
     align-items: center;
 }
 
-.details-image,
+.project-details-image,
+/* .details-image, */
 .details-info {
+    position: relative;
     padding: 12px;
     width: 35%;
-    height: 80%;
+    height: 90%;
     text-align: center;
-    overflow: hidden;
+    background: rgb(35, 86, 60);
     background: linear-gradient(0deg, rgba(35, 86, 60, 0.36746036305147056) 100%, rgba(15, 56, 45, 0.10415504092261907) 100%);
 }
-.details-image .details{
-width: 40px;
-height: 40px;
+
+.details-info h2{
+    margin-top: 40px;
+}
+
+.details-image {
+ width: 100%;
+ height: auto;
 }
 
 .project-divider {
@@ -63,7 +70,7 @@ height: 40px;
     text-align: center;
     gap: 10px;
     width: 80%;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .edit,
@@ -71,4 +78,19 @@ height: 40px;
     width: 40%;
     margin: 0 10px;
     padding: 0.1rem 1rem;
+}
+
+.close {
+    margin-top: 20px;
+    width: 50px;
+    height: 34px;
+    transition: all 0.2s ease-in-out;
+}
+
+.close:hover {
+    background-color: rgb(127, 173, 144);
+    border-radius: 4px;
+    width: 52px;
+    height: 38px;
+    cursor: pointer;
 }

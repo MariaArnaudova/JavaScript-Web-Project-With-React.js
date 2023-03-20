@@ -1,6 +1,4 @@
 import styles from './ProjectItem.module.css';
-// import { useState } from 'react';
-// import image from '../../../public/images/deck garden rooftop.jpg';
 
 export const ProjectItem = ({
     _id,

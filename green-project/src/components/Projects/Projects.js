@@ -12,21 +12,20 @@ export const Projects = ({
     onProjectDeleteClick,
     selectedProject,
     onDetailsClick,
+    onProjectCloseClick,
+    onProjectEditClick,
+    onEditClick
 }) => {
-
-    // const [selectedProject, setSelectedProject] = useState(null);
-
-    // const onDetailsClick = async (projectId) => {
-    //     const response = await fetch(`${baseUrl}/${projectId}`);
-    //     const result = await response.json();
-    //     console.log(result);
-    //     setSelectedProject(result);
-    // };
-
 
     return (
         <>
-            {selectedProject && <Details {...selectedProject} onProjectDeleteClick={onProjectDeleteClick}/>}
+            {selectedProject && <Details
+             {...selectedProject} 
+             onProjectDeleteClick={onProjectDeleteClick} 
+             onProjectCloseClick={onProjectCloseClick}
+             onProjectEditClick={onProjectEditClick}
+            onEditClick={onEditClick}
+             />}
             <div className={styles["projects"]}>
                 <h1>Landscape designs</h1>
 
