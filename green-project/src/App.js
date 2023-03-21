@@ -120,12 +120,12 @@ function App() {
                         onEditClick={onEditClick}
                     />} />
                     <Route path='/projects/:projectId' element={<Details />} />
-                    <Route path='/projects/:projectId/edit' element={<EditProject 
-                    onProjectChangedHandler={onProjectChangedHandler}
-                    editIdeaForm={editIdeaForm}
-                    onEditProjectSubmit={onEditProjectSubmit} 
+                    <Route path='/projects/:projectId/edit' element={<EditProject
+                        onProjectChangedHandler={onProjectChangedHandler}
+                        editIdeaForm={editIdeaForm}
+                        onEditProjectSubmit={onEditProjectSubmit}
                     // editProject={editProject}
-                   />} />
+                    />} />
                 </Routes>
             </main>
             <Footer />
