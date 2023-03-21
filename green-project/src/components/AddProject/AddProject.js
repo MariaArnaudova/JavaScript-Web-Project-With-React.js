@@ -37,31 +37,31 @@ export const AddProject = ({
                 <form className={styles["add-projects-form"]} onSubmit={onSubmit} action="">
                     <div className={styles["form-group"]}>
                         <label htmlFor="description">Description</label>
-                        <input className={styles["description"]} onChange={onChangeHandler} type="text" name="description" id="description" placeholder="Description" />
+                        <input className={styles["description"]} value={values.description} onChange={onChangeHandler} type="text" name="description" id="description" placeholder="Description" />
                     </div>
                     <div className={styles["form-group"]}>
                         <label htmlFor="type">Decor type</label>
-                        <input type="text" onChange={onChangeHandler} name="type" id="type" placeholder="Decor type" />
+                        <input type="text" value={values.type} onChange={onChangeHandler} name="type" id="type" placeholder="Decor type" />
                     </div>
                     <div className={styles["form-group"]}>
                         <label htmlFor="creator">Decor creator</label>
-                        <input type="text" onChange={onChangeHandler} name="creatorName" id="creator" placeholder="Decor creator" />
+                        <input type="text" value={values.creator} onChange={onChangeHandler} name="creatorName" id="creator" placeholder="Decor creator" />
                     </div>
                     <div className={styles["form-group"]}>
                         <label htmlFor="designStage">Design stage</label>
-                        <input type="text" onChange={onChangeHandler} name="designStage" id="designStage" placeholder="Design stage" />
+                        <input type="text" value={values.designStage} onChange={onChangeHandler} name="designStage" id="designStage" placeholder="Design stage" />
                     </div>
                     <div className={styles["form-group"]}>
                         <label htmlFor="imageUrl">Image url</label>
-                        <input type="text" onChange={onChangeHandler} name="imageUrl" id="imageUrl" placeholder="Image Url" />
+                        <input type="text" value={values.imageUrl} onChange={onChangeHandler} name="imageUrl" id="imageUrl" placeholder="Image Url" />
                     </div>
                     <div className={styles["form-group"]}>
                         <label htmlFor="area">Area</label>
-                        <input type="text" onChange={onChangeHandler} name="area" id="area" placeholder="Area" />
+                        <input type="text" value={values.area} onChange={onChangeHandler} name="area" id="area" placeholder="Area" />
                     </div>
                     <div className={styles["form-group"]}>
                         <label htmlFor="plants">Decor plants</label>
-                        <input type="text" onChange={onChangeHandler} name="plants" id="plants" placeholder="Decor plants" />
+                        <input type="text" value={values.plants} onChange={onChangeHandler} name="plants" id="plants" placeholder="Decor plants" />
                     </div>
                     <button className={styles["button-idea"]} type="submit">Add Idea</button>
                 </form>

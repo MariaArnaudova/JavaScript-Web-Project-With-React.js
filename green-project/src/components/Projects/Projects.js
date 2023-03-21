@@ -13,26 +13,29 @@ export const Projects = ({
     selectedProject,
     onDetailsClick,
     onProjectCloseClick,
-    onProjectEditClick,
-    onEditClick
+    // onProjectEditClick,
+    onEditClick,
+    editProject,
 }) => {
 
     return (
         <>
             {selectedProject && <Details
-             {...selectedProject} 
-             onProjectDeleteClick={onProjectDeleteClick} 
-             onProjectCloseClick={onProjectCloseClick}
-             onProjectEditClick={onProjectEditClick}
-            onEditClick={onEditClick}
-             />}
+                editProject={editProject}
+                selectedProject={selectedProject}
+                {...selectedProject}
+                onProjectDeleteClick={onProjectDeleteClick}
+                onProjectCloseClick={onProjectCloseClick}
+                // onProjectEditClick={onProjectEditClick}
+                onEditClick={onEditClick}
+            />}
             <div className={styles["projects"]}>
                 <h1>Landscape designs</h1>
 
                 <ul className={styles["li-projects"]}>
                     {projects.map(p =>
                         <li key={p._id} className={styles["project-element"]}>
-                            <ProjectItem {...p} onDetailsClick={onDetailsClick} />
+                            <ProjectItem {...p} onDetailsClick={onDetailsClick} editProject={editProject} />
                         </li>)}
                 </ul>
                 {/* <ul className={styles["li-projects"]}>

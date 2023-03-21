@@ -1,6 +1,6 @@
  /* Delete modal */
  .delete-modal {
-    position: sticky;
+    position: fixed;
     top: 0px;
     left: 0px;
     display: flex;

@@ -1,6 +1,7 @@
 import styles from './Details.module.css';
 import { DeleteModal } from '../DeleteModal/DeleteModal';
 import { useState } from 'react';
+import { EditProject } from '../EditProject/EditProject';
 
 export const Details = ({
     _id,
@@ -11,17 +12,24 @@ export const Details = ({
     imageUrl,
     area,
     plants,
+    selectedProject,
     onProjectDeleteClick,
     onProjectCloseClick,
-    onProjectEditClick,
+    // onProjectEditClick,
     onEditClick,
+    editProject,
 }) => {
 
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+    // const [showEditProject, setShowEditProject] = useState(false);
 
     const onDeleteProject = () => {
         setShowDeleteModal(true);
     }
+
+    // const onEditProjectClick = () => {
+    //     setShowEditProject(true);
+    // }
     return (
         // <!-- Details page -->
         <>
@@ -68,9 +76,10 @@ export const Details = ({
                     </div>
                 </div>
                 {showDeleteModal && <DeleteModal
-                 onProjectDeleteClick={onProjectDeleteClick}
-                 onProjectCloseClick ={onProjectCloseClick}
-                  _id={_id} />}
+                    onProjectDeleteClick={onProjectDeleteClick}
+                    onProjectCloseClick={onProjectCloseClick}
+                    _id={_id} />}
+
             </section>
 
         </>

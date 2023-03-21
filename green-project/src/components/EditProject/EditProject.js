@@ -1,6 +1,36 @@
+import { useState } from "react";
+
 import styles from './EditProject.module.css';
 
-export const EditProject = () => {
+export const EditProject = ({
+    // editProject,
+    onEditProjectSubmit,
+    onProjectChangedHandler,
+    editIdeaForm,
+}) => {
+
+    // const [editIdeaForm, setEditIdeaForm] = useState({
+    //     description: '',
+    //     type: '',
+    //     creatorName: '',
+    //     designStage: '',
+    //     imageUrl: '',
+    //     area: '',
+    //     plants: '',
+    // });
+
+    // const onProjectChangedHandler = (e) => {
+    //     console.log(e.target.value);
+    //     setEditIdeaForm(state => ({ ...state, [e.target.name]: e.target.value }))
+
+    // }
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+         onEditProjectSubmit(editIdeaForm._id, editIdeaForm);
+    }
+
     return (
 
         // <!-- Edit Project -->
@@ -10,34 +40,34 @@ export const EditProject = () => {
 
             <div className={styles["add-projects-div"]}>
                 <h2 className={styles["add-projects-title"]}>Edit Green Idea</h2>
-                <form className={styles["add-projects-form"]} action="">
+                <form className={styles["add-projects-form"]} onSubmit={onSubmit} action="">
                     <div className={styles["form-group"]}>
                         <label htmlFor="description">Description</label>
-                        <input className={styles["description"]} type="text" name="description" id="description" placeholder="Description" />
+                        <input className={styles["description"]} value={editIdeaForm.description} onChange={onProjectChangedHandler} type="text" name="description" id="description" placeholder="Description" />
                     </div>
                     <div className={styles["form-group"]}>
                         <label htmlFor="type">Decor type</label>
-                        <input type="text" name="type" id="type" placeholder="Decor type" />
+                        <input type="text" name="type" value={editIdeaForm.type} onChange={onProjectChangedHandler} id="type" placeholder="Decor type" />
                     </div>
                     <div className={styles["form-group"]}>
                         <label htmlFor="creator">Decor creator</label>
-                        <input type="text" name="creatorName" id="creator" placeholder="Decor creator" />
+                        <input type="text" name="creatorName" value={editIdeaForm.creatorName} onChange={onProjectChangedHandler} id="creator" placeholder="Decor creator" />
                     </div>
                     <div className={styles["form-group"]}>
                         <label htmlFor="designStage">Design stage</label>
-                        <input type="text" name="designStage" id="designStage" placeholder="Design stage" />
+                        <input type="text" name="designStage" value={editIdeaForm.designStage} onChange={onProjectChangedHandler} id="designStage" placeholder="Design stage" />
                     </div>
                     <div className={styles["form-group"]}>
                         <label htmlFor="imageUrl">Image url</label>
-                        <input type="text" name="imageUrl" id="imageUrl" placeholder="Image Url" />
+                        <input type="text" name="imageUrl" value={editIdeaForm.imageUrl} onChange={onProjectChangedHandler} id="imageUrl" placeholder="Image Url" />
                     </div>
                     <div className={styles["form-group"]}>
                         <label htmlFor="area">Area</label>
-                        <input type="text" name="area" id="area" placeholder="Area" />
+                        <input type="text" name="area" value={editIdeaForm.area} onChange={onProjectChangedHandler} id="area" placeholder="Area" />
                     </div>
                     <div className={styles["form-group"]}>
                         <label htmlFor="plants">Decor plants</label>
-                        <input type="text" name="plants" id="plants" placeholder="Decor plants" />
+                        <input type="text" name="plants" value={editIdeaForm.plants} onChange={onProjectChangedHandler} id="plants" placeholder="Decor plants" />
                     </div>
                     <button className={styles["button-idea"]} type="submit">Edit Idea</button>
                 </form>

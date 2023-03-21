@@ -10,7 +10,7 @@ import { Register } from './components/Register/Register';
 import { AddProject } from './components/AddProject/AddProject';
 import { Projects } from './components/Projects/Projects';
 import { Details } from './components/Details/Details';
-import {EditProject} from './components/EditProject/EditProject';
+import { EditProject } from './components/EditProject/EditProject';
 
 const baseUrl = 'http://localhost:3030/jsonstore/projects';
 
@@ -18,7 +18,18 @@ function App() {
 
     const navigate = useNavigate();
     const [projects, setProjects] = useState([]);
-   
+    const [selectedProject, setSelectedProject] = useState(null);
+    const [editProject, setEditProject] = useState(null);
+    const [editIdeaForm, setEditIdeaForm] = useState({
+        description: '',
+        type: '',
+        creatorName: '',
+        designStage: '',
+        imageUrl: '',
+        area: '',
+        plants: '',
+    });
+
     useEffect(() => {
         fetch(baseUrl)
             .then(res => res.json())
@@ -43,8 +54,6 @@ function App() {
         navigate('/projects');
     };
 
-    const [selectedProject, setSelectedProject] = useState(null);
-
     const onDetailsClick = async (projectId) => {
         const response = await fetch(`${baseUrl}/${projectId}`);
         const result = await response.json();
@@ -59,10 +68,32 @@ function App() {
         setSelectedProject(null);
     };
 
-    const onEditClick = async(projectId)=> {
+    const onEditClick = async (projectId) => {
         const response = await fetch(`${baseUrl}/${projectId}`);
         const result = await response.json();
-        // navigate('/projects/:projectId')
+        // setEditProject(result)
+        setEditIdeaForm(result)
+        navigate('/projects/:projectId/edit')
+    }
+
+    const onEditProjectSubmit = async (projectId, data) => {
+        const response = await fetch(`${baseUrl}/${projectId}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ ...data })
+        });
+        const result = await response.json();
+        setProjects(state => state.map(x => x._id === projectId ? result : x))
+        setSelectedProject(null)
+        navigate('/projects');
+    };
+
+    const onProjectChangedHandler = (e) => {
+        // setEditProject(e.target.value)
+        setEditIdeaForm(state => ({ ...state, [e.target.name]: e.target.value }))
+
     }
 
     const onProjectCloseClick = (projectId) => {
@@ -79,16 +110,22 @@ function App() {
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/create-project' element={<AddProject onCreateProjectSubmit={onCreateProjectSubmit} />} />
-                    <Route path='/projects' element={<Projects 
-                    projects={projects} 
-                    selectedProject={selectedProject} 
-                    onDetailsClick={onDetailsClick} 
-                    onProjectDeleteClick={onProjectDeleteClick}
-                    onProjectCloseClick={onProjectCloseClick}
-                    onEditClick ={onEditClick} 
+                    <Route path='/projects' element={<Projects
+                        projects={projects}
+                        selectedProject={selectedProject}
+                        editProject={editProject}
+                        onDetailsClick={onDetailsClick}
+                        onProjectDeleteClick={onProjectDeleteClick}
+                        onProjectCloseClick={onProjectCloseClick}
+                        onEditClick={onEditClick}
                     />} />
-                    <Route path='/projects/:projectId' element={<Details  />} />
-                    <Route path='/projects/:projectId/edit' element={<EditProject />} />
+                    <Route path='/projects/:projectId' element={<Details />} />
+                    <Route path='/projects/:projectId/edit' element={<EditProject 
+                    onProjectChangedHandler={onProjectChangedHandler}
+                    editIdeaForm={editIdeaForm}
+                    onEditProjectSubmit={onEditProjectSubmit} 
+                    // editProject={editProject}
+                   />} />
                 </Routes>
             </main>
             <Footer />
