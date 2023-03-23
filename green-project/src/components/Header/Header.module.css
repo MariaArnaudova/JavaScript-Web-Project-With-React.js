@@ -29,6 +29,19 @@
     align-items: center;
 }
 
+.header .nav .user{
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.gest{
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
 .nav-link {
     color: rgb(25, 43, 43);
     text-decoration: none;

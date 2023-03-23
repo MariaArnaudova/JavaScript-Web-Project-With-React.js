@@ -7,6 +7,10 @@
     text-align: center;
     margin: 0 auto;
     background-color: rgb(243, 241, 241);
+    color: rgb(25, 43, 43);
+    background-image: url('../../public/images/master-plan_Grey.jpg');
+    background-size: cover;
+    background-position: center center;
 
 }
 
@@ -16,6 +20,7 @@
 
 .projects h1 {
     margin-top: 6%;
+    background-color: beige;
 }
 
 .project-info {

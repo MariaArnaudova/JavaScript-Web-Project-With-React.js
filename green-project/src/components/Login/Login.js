@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import styles from "./Login.module.css";
 import { Link } from "react-router-dom";
@@ -17,16 +17,16 @@ export const Login = () => {
     const { values, changeHandler, onSubmit } = useForm({
         [LoginFormKeys.Email]: '',
         [LoginFormKeys.Password]: '',
-    }, onLoginSubmit)
-
+    }, onLoginSubmit);
+ 
+   
     return (
         <section className={styles["login"]}>
 
             <div className={styles["login-div"]}>
                 <h2 className={styles["login-title"]}>Login</h2>
                 <p className={styles["login-preview"]}>Log in to your profile and add your new project</p>
-
-                <form className={styles["login-form"]} onSubmit={onSubmit}>
+                <form className={styles["login-form"]} onSubmit={onSubmit} method="POST">
                     <div className={styles["form-group"]}>
                         <label htmlFor="email">Email</label>
                         <input
@@ -35,8 +35,8 @@ export const Login = () => {
                             id="email"
                             placeholder="email ..."
                             value={values[LoginFormKeys.Email]}
-                            onChange={changeHandler} 
-                            />
+                            onChange={changeHandler}
+                        />
                     </div>
                     <div className={styles["form-group"]}>
                         <label htmlFor="password">Password</label>
@@ -53,7 +53,7 @@ export const Login = () => {
                     <button className={styles["button-idea"]}>Login</button>
                     <Link to="/register" className={styles["redirect-register"]} >If you don't have a registration click here</Link>
                 </form>
-                
+
             </div>
 
         </section>

@@ -38,7 +38,6 @@ function App() {
         fetch(baseUrl)
             .then(res => res.json())
             .then(data => {
-                // console.log(data)
                 setProjects(Object.values(data))
             })
     }, [])
@@ -102,22 +101,26 @@ function App() {
     }
 
     const onLoginSubmit = async (data) => {
-        console.log(data);
         try {
             const result = await authService.login(data);
-
-            console.log(result);
             setAuth(result);
             
             navigate('/projects');
         } catch (error) {
             console.log('There is a problem');
         }
-        console.log(auth);
+    };
+
+    const context = {
+        onLoginSubmit,
+        userId : auth._id,
+        token:auth.accessToken,
+        email: auth.email,
+        isAuthenticated: !!auth.accessToken
     }
 
     return (
-        <AuthContext.Provider value={{ onLoginSubmit }}>
+        <AuthContext.Provider value={context}>
 
             <div className="App">
                 <Header />
