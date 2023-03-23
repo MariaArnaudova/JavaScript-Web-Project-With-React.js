@@ -1,34 +1,15 @@
-import { useState } from "react";
-
 import styles from './EditProject.module.css';
 
 export const EditProject = ({
-    // editProject,
     onEditProjectSubmit,
     onProjectChangedHandler,
     editIdeaForm,
 }) => {
 
-    // const [editIdeaForm, setEditIdeaForm] = useState({
-    //     description: '',
-    //     type: '',
-    //     creatorName: '',
-    //     designStage: '',
-    //     imageUrl: '',
-    //     area: '',
-    //     plants: '',
-    // });
-
-    // const onProjectChangedHandler = (e) => {
-    //     console.log(e.target.value);
-    //     setEditIdeaForm(state => ({ ...state, [e.target.name]: e.target.value }))
-
-    // }
-
     const onSubmit = (e) => {
         e.preventDefault();
 
-         onEditProjectSubmit(editIdeaForm._id, editIdeaForm);
+        onEditProjectSubmit(editIdeaForm._id, editIdeaForm);
     }
 
     return (

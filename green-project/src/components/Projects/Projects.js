@@ -1,10 +1,9 @@
 import styles from './Projects.module.css';
-import { useState } from 'react';
 
 import { ProjectItem } from './ProjectItem/ProjectItem.js'
 import { Details } from '../Details/Details';
 
-const baseUrl = 'http://localhost:3030/jsonstore/projects';
+// const baseUrl = 'http://localhost:3030/jsonstore/projects';
 
 
 export const Projects = ({
@@ -30,7 +29,7 @@ export const Projects = ({
                 onEditClick={onEditClick}
             />}
             <div className={styles["projects"]}>
-                <h1>Landscape designs</h1>
+                <h1>Landscape Designs</h1>
 
                 <ul className={styles["li-projects"]}>
                     {projects.map(p =>

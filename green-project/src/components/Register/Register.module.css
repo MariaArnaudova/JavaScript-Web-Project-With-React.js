@@ -1,4 +1,4 @@
-@import url('../../reset.css');
+/* @import url('../../reset.css'); */
 
 /* Register Page */
 
@@ -75,4 +75,10 @@
 .button-idea {
     margin-top: 20px;
     padding: 0px 30px;
+}
+
+.redirect-login {
+    display: block;
+    margin-top: 10px;
+    color: rgb(25, 43, 43);
 }

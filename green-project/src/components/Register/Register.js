@@ -1,4 +1,5 @@
 import styles from './Register.module.css';
+import { Link } from "react-router-dom";
 
 export const Register = () => {
     return(
@@ -26,6 +27,7 @@ export const Register = () => {
                     </div>
 
                     <button className={styles["button-idea"]} type="submit">Register</button>
+                    <Link to="/login" className={styles["redirect-login"]} >If you have a registration click here</Link>
                 </form>
             </div>
 

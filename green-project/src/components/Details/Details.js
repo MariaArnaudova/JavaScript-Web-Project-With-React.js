@@ -47,20 +47,16 @@ export const Details = ({
 
                             <p className={styles["details-descriptions"]}>Description: {description}.</p>
                             <p className={styles["details-type"]}>
-                                Decor type:
-                                {type}
+                                Decor type: {type}
                             </p>
                             <p className={styles["details-creator"]}>
-                                Decor creator:
-                                {creatorName}
+                                Decor creator: {creatorName}
                             </p>
                             <p className={styles["details-area"]}>
-                                Decor area:
-                                {area};
+                                Decor area: {area};
                             </p>
                             <p className={styles["details-designStage"]}>
-                                Design stage:
-                                {designStage}
+                                Design stage: {designStage}
                             </p>
                             <p className={styles["details-ideas"]}>
                                 Decor plants: {plants}

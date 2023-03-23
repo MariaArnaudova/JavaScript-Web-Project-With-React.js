@@ -1,4 +1,4 @@
-@import url('../../reset.css');
+/* @import url('../../reset.css'); */
 
 /* Add Projects */
 .add-projects {
@@ -19,7 +19,7 @@
 
 .add-projects-div {
     width: 25%;
-    height: 90vh;
+    height: 70vh;
     text-align: center;
     border: 1px solid rgb(25, 43, 43);
     padding: 15px 20px;
@@ -67,6 +67,6 @@
 }
 
 .button-idea {
-    margin-top: 10px;
+    margin-top:20px;
     padding: 0px 30px;
 }

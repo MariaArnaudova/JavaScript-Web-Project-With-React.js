@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from "react-router-dom";
+import { AuthContext } from './contexts/AuthContext';
 
+import { authServiceFactory } from './services/authService';
 
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
@@ -29,12 +31,14 @@ function App() {
         area: '',
         plants: '',
     });
+    const [auth, setAuth] = useState({});
+    const authService = authServiceFactory(auth.accessToken);
 
     useEffect(() => {
         fetch(baseUrl)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 setProjects(Object.values(data))
             })
     }, [])
@@ -71,7 +75,6 @@ function App() {
     const onEditClick = async (projectId) => {
         const response = await fetch(`${baseUrl}/${projectId}`);
         const result = await response.json();
-        // setEditProject(result)
         setEditIdeaForm(result)
         navigate('/projects/:projectId/edit')
     }
@@ -91,45 +94,60 @@ function App() {
     };
 
     const onProjectChangedHandler = (e) => {
-        // setEditProject(e.target.value)
         setEditIdeaForm(state => ({ ...state, [e.target.name]: e.target.value }))
-
     }
 
-    const onProjectCloseClick = (projectId) => {
+    const onProjectCloseClick = () => {
         setSelectedProject(null);
     }
 
+    const onLoginSubmit = async (data) => {
+        console.log(data);
+        try {
+            const result = await authService.login(data);
+
+            console.log(result);
+            setAuth(result);
+            
+            navigate('/projects');
+        } catch (error) {
+            console.log('There is a problem');
+        }
+        console.log(auth);
+    }
 
     return (
-        <div className="App">
-            <Header />
-            <main id="main-content">
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/register' element={<Register />} />
-                    <Route path='/create-project' element={<AddProject onCreateProjectSubmit={onCreateProjectSubmit} />} />
-                    <Route path='/projects' element={<Projects
-                        projects={projects}
-                        selectedProject={selectedProject}
-                        editProject={editProject}
-                        onDetailsClick={onDetailsClick}
-                        onProjectDeleteClick={onProjectDeleteClick}
-                        onProjectCloseClick={onProjectCloseClick}
-                        onEditClick={onEditClick}
-                    />} />
-                    <Route path='/projects/:projectId' element={<Details />} />
-                    <Route path='/projects/:projectId/edit' element={<EditProject
-                        onProjectChangedHandler={onProjectChangedHandler}
-                        editIdeaForm={editIdeaForm}
-                        onEditProjectSubmit={onEditProjectSubmit}
-                    // editProject={editProject}
-                    />} />
-                </Routes>
-            </main>
-            <Footer />
-        </div>
+        <AuthContext.Provider value={{ onLoginSubmit }}>
+
+            <div className="App">
+                <Header />
+                <main id="main-content">
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/register' element={<Register />} />
+                        <Route path='/create-project' element={<AddProject onCreateProjectSubmit={onCreateProjectSubmit} />} />
+                        <Route path='/projects' element={<Projects
+                            projects={projects}
+                            selectedProject={selectedProject}
+                            editProject={editProject}
+                            onDetailsClick={onDetailsClick}
+                            onProjectDeleteClick={onProjectDeleteClick}
+                            onProjectCloseClick={onProjectCloseClick}
+                            onEditClick={onEditClick}
+                        />} />
+                        <Route path='/projects/:projectId' element={<Details />} />
+                        <Route path='/projects/:projectId/edit' element={<EditProject
+                            onProjectChangedHandler={onProjectChangedHandler}
+                            editIdeaForm={editIdeaForm}
+                            onEditProjectSubmit={onEditProjectSubmit}
+                        // editProject={editProject}
+                        />} />
+                    </Routes>
+                </main>
+                <Footer />
+            </div>
+        </AuthContext.Provider>
     );
 }
 
