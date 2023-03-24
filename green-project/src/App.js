@@ -3,18 +3,20 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { AuthContext } from './contexts/AuthContext';
 
 import { authServiceFactory } from './services/authService';
+import {projectServiceFactory} from './services/projectService';
 
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
 import { Login } from './components/Login/Login';
+import { Logout } from './components/Logout/Logout';
 import { Register } from './components/Register/Register';
 import { AddProject } from './components/AddProject/AddProject';
 import { Projects } from './components/Projects/Projects';
 import { Details } from './components/Details/Details';
 import { EditProject } from './components/EditProject/EditProject';
 
-const baseUrl = 'http://localhost:3030/jsonstore/projects';
+const baseUrl = 'http://localhost:3030/data/projects';
 
 function App() {
 
@@ -33,61 +35,43 @@ function App() {
     });
     const [auth, setAuth] = useState({});
     const authService = authServiceFactory(auth.accessToken);
+    const projectService = projectServiceFactory(auth.accessToken);
 
     useEffect(() => {
-        fetch(baseUrl)
-            .then(res => res.json())
-            .then(data => {
-                setProjects(Object.values(data))
-            })
+      projectService.getAll()
+      .then(result => {
+        setProjects(result);
+      })
     }, [])
 
     const onCreateProjectSubmit = async (values) => {
-        const response = await fetch(baseUrl, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ ...values })
-        });
-
-        const result = await response.json();
-
-        setProjects(state => [...state, result])
+        const newProject = await projectService.create(values);
+        setProjects(state => [...state, newProject])
         navigate('/projects');
     };
 
     const onDetailsClick = async (projectId) => {
-        const response = await fetch(`${baseUrl}/${projectId}`);
-        const result = await response.json();
-        console.log(result);
-        setSelectedProject(result);
+        const detailProject = await projectService.getOne(projectId);
+         console.log(detailProject);
+        setSelectedProject(detailProject);
     };
 
     const onProjectDeleteClick = async (projectId) => {
-        await fetch(`${baseUrl}/${projectId}`, { method: 'DELETE' });
-
+        await projectService.delete(projectId);
         setProjects(state => state.filter(x => x._id !== projectId));
         setSelectedProject(null);
     };
 
     const onEditClick = async (projectId) => {
-        const response = await fetch(`${baseUrl}/${projectId}`);
-        const result = await response.json();
-        setEditIdeaForm(result)
+        const editProject = await projectService.getOne(projectId);
+        setEditIdeaForm(editProject)
         navigate('/projects/:projectId/edit')
     }
 
     const onEditProjectSubmit = async (projectId, data) => {
-        const response = await fetch(`${baseUrl}/${projectId}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ ...data })
-        });
-        const result = await response.json();
-        setProjects(state => state.map(x => x._id === projectId ? result : x))
+
+        const editProject = await projectService.edit(projectId, data);
+        setProjects(state => state.map(x => x._id === projectId ? editProject : x))
         setSelectedProject(null)
         navigate('/projects');
     };
@@ -104,17 +88,39 @@ function App() {
         try {
             const result = await authService.login(data);
             setAuth(result);
-            
+
             navigate('/projects');
         } catch (error) {
             console.log('There is a problem');
         }
     };
 
+    const onRegisterSubmit = async (values) => {
+        const { confirmPassword, ...registerData } = values;
+        if (confirmPassword !== registerData.password) {
+            return;
+        }
+
+        try {
+            const result = await authService.register(registerData);
+            setAuth(result);
+            navigate('/projects');
+        } catch (error) {
+            console.log('There is a problem');
+        }
+    }
+
+    const onLogout = async () => {
+        // await authService.logout();
+        setAuth({});
+    }
+
     const context = {
+        onLogout,
         onLoginSubmit,
-        userId : auth._id,
-        token:auth.accessToken,
+        onRegisterSubmit,
+        userId: auth._id,
+        token: auth.accessToken,
         email: auth.email,
         isAuthenticated: !!auth.accessToken
     }
@@ -128,6 +134,7 @@ function App() {
                     <Routes>
                         <Route path='/' element={<Home />} />
                         <Route path='/login' element={<Login />} />
+                        <Route path='/logout' element={<Logout />} />
                         <Route path='/register' element={<Register />} />
                         <Route path='/create-project' element={<AddProject onCreateProjectSubmit={onCreateProjectSubmit} />} />
                         <Route path='/projects' element={<Projects

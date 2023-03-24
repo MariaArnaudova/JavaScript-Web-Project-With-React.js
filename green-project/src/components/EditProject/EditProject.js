@@ -21,7 +21,7 @@ export const EditProject = ({
 
             <div className={styles["add-projects-div"]}>
                 <h2 className={styles["add-projects-title"]}>Edit Green Idea</h2>
-                <form className={styles["add-projects-form"]} onSubmit={onSubmit} action="">
+                <form className={styles["add-projects-form"]} onSubmit={onSubmit} method="POST"  action="">
                     <div className={styles["form-group"]}>
                         <label htmlFor="description">Description</label>
                         <input className={styles["description"]} value={editIdeaForm.description} onChange={onProjectChangedHandler} type="text" name="description" id="description" placeholder="Description" />

@@ -11,3 +11,4 @@ export const authServiceFactory = (token) => {
         logout: () => request.get(`${baseUrl}/logout`),
     }
 };
+

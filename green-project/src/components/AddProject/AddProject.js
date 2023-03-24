@@ -34,7 +34,7 @@ export const AddProject = ({
 
             <div className={styles["add-projects-div"]}>
                 <h2 className={styles["add-projects-title"]}>Add Green Idea</h2>
-                <form className={styles["add-projects-form"]} onSubmit={onSubmit} action="">
+                <form className={styles["add-projects-form"]} onSubmit={onSubmit} method="POST" action="">
                     <div className={styles["form-group"]}>
                         <label htmlFor="description">Description</label>
                         <input className={styles["description"]} value={values.description} onChange={onChangeHandler} type="text" name="description" id="description" placeholder="Description" />

@@ -31,7 +31,7 @@ export const Header = () => {
                                 <Link to="/create-project" className={styles["nav-link"]}>Add Decor Idea</Link>
                             </li>
                             <li className={styles["nav-item"]}>
-                                <Link to="/projects" className={styles["nav-link"]}>Logout</Link>
+                                <Link to="/logout" className={styles["nav-link"]}>Logout</Link>
                             </li>
                         </div>
                     )}

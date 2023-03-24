@@ -1,7 +1,10 @@
+import { useContext } from 'react';
 import styles from './Details.module.css';
 import { DeleteModal } from '../DeleteModal/DeleteModal';
 import { useState } from 'react';
 import { EditProject } from '../EditProject/EditProject';
+
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const Details = ({
     _id,
@@ -19,6 +22,8 @@ export const Details = ({
     onEditClick,
     editProject,
 }) => {
+
+    const { token } = useContext(AuthContext);
 
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     // const [showEditProject, setShowEditProject] = useState(false);
@@ -63,9 +68,14 @@ export const Details = ({
 
                             </p>
                             <div className={styles["buttons-details"]}>
-                                <button type="button" className={styles["edit"]} onClick={() => onEditClick(_id)}>Edit Idea</button>
+                                {token && (
+                                    <button type="button" className={styles["edit"]} onClick={() => onEditClick(_id)}>Edit Idea</button>
+                                )}
+                                {token && (
+                                    <button type="button" className={styles["delete"]} onClick={onDeleteProject} >Delete Project</button>
+                                )
+                                }
                                 {/* <button className={styles["delete"]} onClick={() => onProjectDeleteClick(_id)} >Delete Project</button> */}
-                                <button type="button" className={styles["delete"]} onClick={onDeleteProject} >Delete Project</button>
                                 <button type="button" className={styles["close"]} onClick={() => onProjectCloseClick(_id)}>Close</button>
                             </div>
                         </div>
