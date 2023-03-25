@@ -1,8 +1,10 @@
-import { useContext } from 'react';
+import {useNavigate } from "react-router-dom";
 import styles from './Details.module.css';
+
 import { DeleteModal } from '../DeleteModal/DeleteModal';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { EditProject } from '../EditProject/EditProject';
+import { projectServiceFactory } from '../../services/projectService';
 
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -15,6 +17,7 @@ export const Details = ({
     imageUrl,
     area,
     plants,
+    _ownerId,
     selectedProject,
     onProjectDeleteClick,
     onProjectCloseClick,
@@ -23,13 +26,14 @@ export const Details = ({
     editProject,
 }) => {
 
-    const { token } = useContext(AuthContext);
-
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const { userId, token } = useContext(AuthContext);
+    const projectService = projectServiceFactory(token);
+    const navigate = useNavigate();
     // const [showEditProject, setShowEditProject] = useState(false);
 
-    const onDeleteProject = () => {
-        setShowDeleteModal(true);
+    const onDeleteProject = async (_id) => {
+        setShowDeleteModal(true); 
     }
 
     // const onEditProjectClick = () => {
@@ -44,7 +48,10 @@ export const Details = ({
                     <div className={styles["project-divider"]}></div>
                     <div className={styles["project-details"]}>
                         <div className={styles["project-details-image"]}>
-                            <img className={styles["details-image details"]} src={imageUrl} alt="Details Inerior decor" />
+                            <div className={styles["project-proba"]}>
+
+                            <img className={styles["details-image"]} src={imageUrl} alt="Details Inerior decor" />
+                            </div>
                         </div>
                         {/* <img className={styles["details-image details"]} src={imageUrl} alt="Details Inerior decor" /> */}
                         <div className={styles["details-info"]}>
@@ -68,13 +75,15 @@ export const Details = ({
 
                             </p>
                             <div className={styles["buttons-details"]}>
-                                {token && (
+
+                                {_ownerId === userId && (
                                     <button type="button" className={styles["edit"]} onClick={() => onEditClick(_id)}>Edit Idea</button>
                                 )}
-                                {token && (
-                                    <button type="button" className={styles["delete"]} onClick={onDeleteProject} >Delete Project</button>
-                                )
-                                }
+
+                                {_ownerId === userId && (
+                                <button type="button" className={styles["delete"]} onClick={onDeleteProject} >Delete Project</button>
+                                 )} 
+
                                 {/* <button className={styles["delete"]} onClick={() => onProjectDeleteClick(_id)} >Delete Project</button> */}
                                 <button type="button" className={styles["close"]} onClick={() => onProjectCloseClick(_id)}>Close</button>
                             </div>

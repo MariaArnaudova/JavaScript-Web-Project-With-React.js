@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState  } from 'react';
 
 import styles from './AddProject.module.css'
 
@@ -23,7 +23,7 @@ export const AddProject = ({
     const onSubmit = (e) => {
         e.preventDefault();
 
-        onCreateProjectSubmit(values);
+        onCreateProjectSubmit(values );
     }
 
     return (

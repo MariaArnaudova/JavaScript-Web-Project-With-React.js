@@ -24,7 +24,10 @@ export const ProjectItem = ({
                     <p className={styles["details-creator"]}>
                         Decor creator: {creatorName} ;
                     </p>
-                    <button className={styles["details-button"]} onClick={() => onDetailsClick(_id)}>Details</button>
+                    <a href="#top">
+                        <button className={styles["details-button"]} onClick={() => onDetailsClick(_id)}>Details</button>
+                    </a>
+
                 </div>
             </div>
         </div>

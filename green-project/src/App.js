@@ -3,7 +3,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { AuthContext } from './contexts/AuthContext';
 
 import { authServiceFactory } from './services/authService';
-import {projectServiceFactory} from './services/projectService';
+import { projectServiceFactory } from './services/projectService';
 
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
@@ -16,7 +16,7 @@ import { Projects } from './components/Projects/Projects';
 import { Details } from './components/Details/Details';
 import { EditProject } from './components/EditProject/EditProject';
 
-const baseUrl = 'http://localhost:3030/data/projects';
+// const baseUrl = 'http://localhost:3030/data/projects';
 
 function App() {
 
@@ -38,10 +38,10 @@ function App() {
     const projectService = projectServiceFactory(auth.accessToken);
 
     useEffect(() => {
-      projectService.getAll()
-      .then(result => {
-        setProjects(result);
-      })
+        projectService.getAll()
+            .then(result => {
+                setProjects(result);
+            })
     }, [])
 
     const onCreateProjectSubmit = async (values) => {
@@ -52,7 +52,7 @@ function App() {
 
     const onDetailsClick = async (projectId) => {
         const detailProject = await projectService.getOne(projectId);
-         console.log(detailProject);
+        //  console.log(detailProject);
         setSelectedProject(detailProject);
     };
 
@@ -60,6 +60,7 @@ function App() {
         await projectService.delete(projectId);
         setProjects(state => state.filter(x => x._id !== projectId));
         setSelectedProject(null);
+        navigate('/projects');
     };
 
     const onEditClick = async (projectId) => {
@@ -109,10 +110,13 @@ function App() {
             console.log('There is a problem');
         }
     }
+    // const onDeleteToken = async () => {
+    //    await setAuth({});
+    // }
 
     const onLogout = async () => {
-        // await authService.logout();
         setAuth({});
+        await authService.logout();
     }
 
     const context = {
