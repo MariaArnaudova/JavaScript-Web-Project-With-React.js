@@ -1,10 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500&family=Work+Sans&display=swap');
 
 /* Box sizing rules */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+body{
+  font-family: Oswald, sans-serif;
 }
 
 /* Remove default margin */
