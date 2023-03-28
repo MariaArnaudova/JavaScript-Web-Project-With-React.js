@@ -1,5 +1,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,700;1,400&family=Oswald:wght@200;300;400;500&family=Roboto:wght@300;400;500&family=Work+Sans&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200;300;400;500&family=Roboto:wght@300;400;500&family=Work+Sans&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200;300;400;500&family=Roboto:wght@300;400;500&family=Work+Sans&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Lato:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200;300;400;500&family=Roboto:wght@300;400;500&family=Work+Sans&display=swap');
+;
 
 /* Box sizing rules */
 *,
@@ -12,7 +14,8 @@ body{
   /* font-family: Oswald, sans-serif; */
   /* font-family: Lato, sans-serif; */
   /* font-family: Roboto, sans-serif; */
-   font-family: Lato, sans-serif; 
+   /* font-family: Lato, sans-serif;  */
+   font-family: Cabin Sketch, sans-serif;
 }
 
 /* Remove default margin */

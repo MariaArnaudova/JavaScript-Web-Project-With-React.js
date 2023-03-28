@@ -82,3 +82,8 @@
     margin-top: 10px;
     color: rgb(25, 43, 43);
 }
+
+.form-error {
+    color: rgb(197, 66, 66);
+    font-size:small;
+}

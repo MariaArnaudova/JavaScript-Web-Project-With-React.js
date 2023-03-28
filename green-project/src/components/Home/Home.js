@@ -13,6 +13,7 @@ export const Home =()=> {
                 <h2>
                     About Green Designs
                 </h2>
+                <div className={styles["home-divider"]}></div>
                 <p className={styles["info"]}>
                     Our landscape designers continuously utilize modern techniques and materials based on proven
                     methods, to deliver results that will stand the test of time and protect your investment. Our

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Lato:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200;300;400;500&family=Roboto:wght@300;400;500&family=Work+Sans&display=swap');
+
+
 @import url('../../reset.css');
   /* Home page */
   .home-section {
@@ -11,6 +14,7 @@
     text-align: center;
     font-size: 35px;
     color: rgb(25, 43, 43);
+    font-family: Cabin Sketch, sans-serif;
     ;
 }
 
@@ -36,6 +40,11 @@
 
 .home-info {
     padding: 30px;
+    font-family: Cabin Sketch, sans-serif;
+}
+
+.home-info h2{
+    padding-bottom: 15px;;
 }
 
 .info {

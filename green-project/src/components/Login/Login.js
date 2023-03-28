@@ -28,8 +28,7 @@ export const Login = ({
     }, onLoginSubmit);
  
     const formValidate = (e) => {
-        console.log('asdasd');
-
+ 
         const value = e.target.value;   
         const errors = {};
 
@@ -42,7 +41,6 @@ export const Login = ({
         }
 
         setFormErros(errors);
-        console.log(formErrors);
     };
 
 
