@@ -39,16 +39,19 @@
 }
 
 .home-info {
-    padding: 30px;
+    padding: 10px;
     font-family: Cabin Sketch, sans-serif;
 }
 
 .home-info h2{
-    padding-bottom: 15px;;
+    padding-bottom: 15px;
+    margin-top: 30px;
 }
 
 .info {
     padding-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .home-divider {

@@ -15,6 +15,7 @@ import { AddProject } from './components/AddProject/AddProject';
 import { Projects } from './components/Projects/Projects';
 import { Details } from './components/Details/Details';
 import { EditProject } from './components/EditProject/EditProject';
+import { AddPlants } from './components/AddPlants/AddPlants';
 
 // const baseUrl = 'http://localhost:3030/data/projects';
 
@@ -33,6 +34,8 @@ function App() {
         area: '',
         plants: '',
     });
+
+    const [addPlantsProject, setAddPlants] = useState([]);
 
     const [auth, setAuth] = useState({});
     const authService = authServiceFactory(auth.accessToken);
@@ -118,6 +121,12 @@ function App() {
     const onLogout = async () => {
         setAuth({});
         await authService.logout();
+    };
+
+    const onAddPlantsClick = async (projectId) => {
+        const addPlantsProject = await projectService.getOne(projectId);
+        setAddPlants(addPlantsProject)
+        navigate('/add-plants')
     }
 
     const context = {
@@ -138,9 +147,11 @@ function App() {
                 <main id="main-content">
                     <Routes>
                         <Route path='/' element={<Home />} />
-                        <Route path='/login' element={<Login/>} />
+                        <Route path='/login' element={<Login />} />
                         <Route path='/logout' element={<Logout />} />
                         <Route path='/register' element={<Register />} />
+                        <Route path='/add-plants' element={<AddPlants
+                            addPlantsProject={addPlantsProject} />} />
                         <Route path='/create-project' element={<AddProject onCreateProjectSubmit={onCreateProjectSubmit} />} />
                         <Route path='/projects' element={<Projects
                             projects={projects}
@@ -150,6 +161,7 @@ function App() {
                             onProjectDeleteClick={onProjectDeleteClick}
                             onProjectCloseClick={onProjectCloseClick}
                             onEditClick={onEditClick}
+                            onAddPlantsClick={onAddPlantsClick}
                         />} />
                         <Route path='/projects/:projectId' element={<Details />} />
                         <Route path='/projects/:projectId/edit' element={<EditProject

@@ -15,6 +15,7 @@ export const Projects = ({
     // onProjectEditClick,
     onEditClick,
     editProject,
+    onAddPlantsClick,
 }) => {
 
     return (
@@ -34,7 +35,7 @@ export const Projects = ({
                 <ul className={styles["li-projects"]}>
                     {projects.map(p =>
                         <li key={p._id} className={styles["project-element"]}>
-                            <ProjectItem {...p} onDetailsClick={onDetailsClick} editProject={editProject} />
+                            <ProjectItem {...p} onDetailsClick={onDetailsClick} editProject={editProject} onAddPlantsClick={onAddPlantsClick} />
                         </li>)}
                 </ul>
                 {/* <ul className={styles["li-projects"]}>

@@ -1,4 +1,5 @@
 /* @import url('../../reset.css'); */
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Lato:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200;300;400;500&family=Rambla&family=Roboto:wght@300;400;500&family=Work+Sans&display=swap');
 
 /* Register Page */
 
@@ -65,6 +66,7 @@
 
 .form-group {
     padding: 0.3rem 0.6rem;
+    font-family: Rambla, sans-serif;
 }
 
 .form-group label {

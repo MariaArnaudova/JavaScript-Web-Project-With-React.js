@@ -6,6 +6,7 @@ export const ProjectItem = ({
     creatorName,
     imageUrl,
     onDetailsClick,
+    onAddPlantsClick,
 }) => {
 
     return (
@@ -26,6 +27,7 @@ export const ProjectItem = ({
                     </p>
                     <a href="#top">
                         <button className={styles["details-button"]} onClick={() => onDetailsClick(_id)}>Details</button>
+                        <button type="button" className={styles["add"]} onClick={() => onAddPlantsClick(_id)}>Add Plants</button>
                     </a>
 
                 </div>

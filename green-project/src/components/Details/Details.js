@@ -29,16 +29,10 @@ export const Details = ({
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const { userId, token } = useContext(AuthContext);
     const projectService = projectServiceFactory(token);
-    const navigate = useNavigate();
-    // const [showEditProject, setShowEditProject] = useState(false);
-
     const onDeleteProject = async (_id) => {
         setShowDeleteModal(true); 
     }
 
-    // const onEditProjectClick = () => {
-    //     setShowEditProject(true);
-    // }
     return (
         // <!-- Details page -->
         <>

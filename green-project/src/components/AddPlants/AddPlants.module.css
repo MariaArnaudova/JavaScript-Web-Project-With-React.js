@@ -1,0 +1,121 @@
+/* Add Plants */
+.details {
+    position: relative;
+    background-color: rgb(243, 241, 241);
+}
+
+.plants-title {
+    padding-top: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 1 rem 2 rem;
+    text-align: center;
+    font-size: 35px;
+    color: rgb(25, 43, 43);
+}
+
+.plants-details {
+    width: auto;
+    height: 70vh;
+    display: flex;
+    gap: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.project-details-image,
+.details-info {
+    position: relative;
+    padding: 20px;
+    width: 30%;
+    height: 80%;
+    text-align: center;
+    border-radius: 6px;
+    background: rgb(35, 86, 60);
+    background: linear-gradient(0deg, rgba(35, 86, 60, 0.36746036305147056) 100%, rgba(15, 56, 45, 0.10415504092261907) 100%);
+}
+
+.project-proba {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+
+.details-image{
+    width: 100%; 
+    height: auto;
+    /* height: 100%; */
+    /* object-fit: cover;  */
+   
+    display: block;
+    position: absolute; /* set the position of the image to absolute */
+    top: 50%; /* center the image vertically */
+    left: 50%; /* center the image horizontally */
+    transform: translate(-50%, -50%); /* center the image perfectly */
+    min-width: 100%; /* set the maximum width of the image to 100% */
+    min-height: 100%; /* set the maximum height of the image to 100% */
+
+}
+
+
+.home-info {
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.plants-divider {
+    width: 70%;
+    height: 1px;
+    margin: auto;
+    justify-content: center;
+    background-color: rgb(25, 43, 43);
+    ;
+}
+
+.details-descriptions,
+.details-type,
+.details-creator,
+.details-area,
+.details-designStage,
+.plants {
+    margin-top: 10px;
+}
+
+.form-group .form-add-plants {
+    text-align: center;
+}
+
+.plant-input {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* .buttons-details {
+    position: absolute;
+    bottom: 30px;
+    left: 90px;
+    margin-top: 30px;
+} */
+
+.add {
+    padding: 0.1rem 2rem;
+}
+
+.textarea {
+    margin: 20px auto;
+    ;
+    display: block;
+}
+
+.form-add-plants {
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
