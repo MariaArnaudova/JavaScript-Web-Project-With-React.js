@@ -12,14 +12,40 @@ const LoginFormKeys = {
 };
 
 
-export const Login = () => {
+export const Login = ({
+
+}) => {
+
+    const [formErrors, setFormErros] = useState({
+        email: '',
+        password: '',
+    });
+
     const { onLoginSubmit } = useContext(AuthContext);
     const { values, changeHandler, onSubmit } = useForm({
         [LoginFormKeys.Email]: '',
         [LoginFormKeys.Password]: '',
     }, onLoginSubmit);
  
-   
+    const formValidate = (e) => {
+        console.log('asdasd');
+
+        const value = e.target.value;   
+        const errors = {};
+
+        if (e.target.name === 'email' && (value.length < 3 || value.length > 20)) {
+            errors.email = 'Email is not valid';
+        } 
+
+        if (e.target.name === 'password' && (value.length < 3 || value.length > 20)) {
+            errors.password = 'Password is not valid';
+        }
+
+        setFormErros(errors);
+        console.log(formErrors);
+    };
+
+
     return (
         <section className={styles["login"]}>
 
@@ -36,8 +62,15 @@ export const Login = () => {
                             placeholder="email ..."
                             value={values[LoginFormKeys.Email]}
                             onChange={changeHandler}
+                            onBlur={formValidate}
+                            style={formErrors.email ? { borderColor: "red" } : {}}
                         />
                     </div>
+                    {formErrors.email &&
+                                    <p className={styles["form-error"]} >
+                                        {formErrors.email}
+                                    </p>
+                                }
                     <div className={styles["form-group"]}>
                         <label htmlFor="password">Password</label>
                         <input
@@ -47,8 +80,15 @@ export const Login = () => {
                             placeholder="password ..."
                             value={values[LoginFormKeys.Password]}
                             onChange={changeHandler}
+                            onBlur={formValidate}
+                            style={formErrors.password ? { borderColor: "red" } : {}}
                         />
                     </div>
+                    {formErrors.password &&
+                                    <p className={styles["form-error"]}>
+                                        {formErrors.password}
+                                    </p>
+                                }
                     {/* <input type="submit" className={styles["button-idea"]} value="Login" /> */}
                     <button className={styles["button-idea"]}>Login</button>
                     <Link to="/register" className={styles["redirect-register"]} >If you don't have a registration click here</Link>

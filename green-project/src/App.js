@@ -33,6 +33,7 @@ function App() {
         area: '',
         plants: '',
     });
+
     const [auth, setAuth] = useState({});
     const authService = authServiceFactory(auth.accessToken);
     const projectService = projectServiceFactory(auth.accessToken);
@@ -137,7 +138,7 @@ function App() {
                 <main id="main-content">
                     <Routes>
                         <Route path='/' element={<Home />} />
-                        <Route path='/login' element={<Login />} />
+                        <Route path='/login' element={<Login/>} />
                         <Route path='/logout' element={<Logout />} />
                         <Route path='/register' element={<Register />} />
                         <Route path='/create-project' element={<AddProject onCreateProjectSubmit={onCreateProjectSubmit} />} />
