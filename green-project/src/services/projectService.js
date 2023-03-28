@@ -30,6 +30,7 @@ export const projectServiceFactory = (token) => {
     const edit = (projectId, data) => request.put(`${baseUrl}/${projectId}`, data);
 
     const deleteProject = (projectId) => request.delete(`${baseUrl}/${projectId}`);
+    
 
     const addPlants = async (plantId, data) => {
         const result = await request.post(`${baseUrl}/${plantId}/plants`, data);
