@@ -1,13 +1,18 @@
+import { useContext } from "react";
 import styles from './ProjectItem.module.css';
+
+import { AuthContext } from '../../../contexts/AuthContext';
 
 export const ProjectItem = ({
     _id,
     type,
-    creatorName,
+    creator,
     imageUrl,
     onDetailsClick,
     onAddPlantsClick,
 }) => {
+
+    const { isAuthenticated } = useContext(AuthContext);
 
     return (
         <div className={styles["project-info"]}>
@@ -23,11 +28,13 @@ export const ProjectItem = ({
                         Decor type: {type}
                     </p>
                     <p className={styles["details-creator"]}>
-                        Decor creator: {creatorName} ;
+                        Decor creator: {creator} ;
                     </p>
                     <a href="#top">
                         <button className={styles["details-button"]} onClick={() => onDetailsClick(_id)}>Details</button>
-                        <button type="button" className={styles["add"]} onClick={() => onAddPlantsClick(_id)}>Add Plants</button>
+
+                        {isAuthenticated && (<button type="button" className={styles["add"]} onClick={() => onAddPlantsClick(_id)}>Add Plants</button>)}
+
                     </a>
 
                 </div>

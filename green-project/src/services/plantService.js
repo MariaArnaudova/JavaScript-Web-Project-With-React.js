@@ -1,18 +1,32 @@
 import * as request from './requester';
+import { requestFactory } from './requester';
 
 const baseUrl = 'http://localhost:3030/data/plants';
 
-export const getAll = async (projectId) => {
-    const query = encodeURIComponent(`projectId="${projectId}"`);
 
-    const result = await request.get(`${baseUrl}?where=${query}`);
-    const plants = Object.values(result);
+export const plantServiceFactory = (token) => {
 
-    return plants;
-};
+    const request = requestFactory(token);
 
-export const create = async (data) => {
-    const result = await request.post(baseUrl, data);
+    const getAll = async (projectId) => {
+        const query = encodeURIComponent(`projectId="${projectId}"`);
 
-    return result;
-};
+        const result = await request.get(`${baseUrl}?where=${query}`);
+        const plants = Object.values(result);
+
+        return plants;
+    };
+
+    const create = async (projectId, plants) => {
+        const result = await request.post(baseUrl, { projectId, plants });
+
+        return result;
+    };
+
+
+    return {
+        getAll,
+        create,
+    };
+}
+

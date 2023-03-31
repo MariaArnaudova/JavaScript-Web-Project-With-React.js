@@ -1,8 +1,33 @@
+import { useContext, useState } from 'react';
+import { useParams, useNavigate } from "react-router-dom";
 import styles from './AddPlants.module.css';
+import { useForm } from "../../hook/useForm";
+
+import { plantServiceFactory } from '../../services/plantService';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const AddPlants = ({
     addPlantsProject
 }) => {
+    const { userId, token } = useContext(AuthContext);
+
+    const { projectId } = useParams();
+    console.log(projectId)
+    const navigate = useNavigate();
+    const plantService = plantServiceFactory(token);
+
+    const [plants, setPlants] = useState([]);
+   
+    const onPlantSubmit = async (plantsValues) => {
+        const addedPlants =await plantService.create(projectId, plantsValues.typePlant);
+        console.log(addedPlants)
+        setPlants(state => [...state, addedPlants]);
+        navigate('/projects')
+    };
+
+    const { values, changeHandler, onSubmit } = useForm({
+        typePlant:''
+    }, onPlantSubmit);
 
     return (
         <section className={styles["plants"]}>
@@ -34,14 +59,21 @@ export const AddPlants = ({
                             Design stage: {addPlantsProject.designStage}
                         </p>
                         <p className={styles["plants"]}>
-                            Decor plants: Lorem ipsum dolor sit amet consectetur ...
+                            Decor plants: {addPlantsProject.plants}
 
                         </p>
                         <div className={styles["form-group form-add-plants"]}>
                             {/* <label htmlFor="plants">Decor plants</label> */}
                             {/* <!-- <input className={styles["plant-input" type="text" name="plants" id="plants" placeholder="Plant name"> --> */}
-                            <textarea name="plant-input" className={styles["textarea"]} id="plants" cols="20" rows="1"></textarea>
-                            <button type="submit" className={styles["add"]}>Add</button>
+                            <form onSubmit={onSubmit} method="POST" action="">
+                                <textarea name="typePlant" className={styles["textarea"]}
+                                 onChange={changeHandler}
+                                 value={values.typePlant}
+                                //  value={plantsValues.typePlant}
+                                  id="plants" cols="20" rows="1"></textarea>
+                                <button type="submit" className={styles["add"]}>Add</button>
+                            </form>
+
                         </div>
                     </div>
                 </div>

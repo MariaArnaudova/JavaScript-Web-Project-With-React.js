@@ -92,6 +92,7 @@ function App() {
     const onLoginSubmit = async (data) => {
         try {
             const result = await authService.login(data);
+            console.log(result);
             setAuth(result);
 
             navigate('/projects');
@@ -126,7 +127,8 @@ function App() {
     const onAddPlantsClick = async (projectId) => {
         const addPlantsProject = await projectService.getOne(projectId);
         setAddPlants(addPlantsProject)
-        navigate('/add-plants')
+        navigate(`/projects/${projectId}/add-plants`);
+        // navigate('/add-plants');
     }
 
     const context = {
@@ -150,7 +152,7 @@ function App() {
                         <Route path='/login' element={<Login />} />
                         <Route path='/logout' element={<Logout />} />
                         <Route path='/register' element={<Register />} />
-                        <Route path='/add-plants' element={<AddPlants
+                        <Route path='/projects/:projectId/add-plants' element={<AddPlants
                             addPlantsProject={addPlantsProject} />} />
                         <Route path='/create-project' element={<AddProject onCreateProjectSubmit={onCreateProjectSubmit} />} />
                         <Route path='/projects' element={<Projects

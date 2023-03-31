@@ -1,9 +1,7 @@
-import {useNavigate } from "react-router-dom";
+import { useContext, useState } from 'react';
 import styles from './Details.module.css';
 
 import { DeleteModal } from '../DeleteModal/DeleteModal';
-import { useContext, useState } from 'react';
-import { EditProject } from '../EditProject/EditProject';
 import { projectServiceFactory } from '../../services/projectService';
 
 import { AuthContext } from '../../contexts/AuthContext';
@@ -12,7 +10,7 @@ export const Details = ({
     _id,
     description,
     type,
-    creatorName,
+    creator,
     designStage,
     imageUrl,
     area,
@@ -47,7 +45,6 @@ export const Details = ({
                             <img className={styles["details-image"]} src={imageUrl} alt="Details Inerior decor" />
                             </div>
                         </div>
-                        {/* <img className={styles["details-image details"]} src={imageUrl} alt="Details Inerior decor" /> */}
                         <div className={styles["details-info"]}>
                             <h2>Green details</h2>
 
@@ -56,7 +53,7 @@ export const Details = ({
                                 Decor type: {type}
                             </p>
                             <p className={styles["details-creator"]}>
-                                Decor creator: {creatorName}
+                                Decor creator: {creator}
                             </p>
                             <p className={styles["details-area"]}>
                                 Decor area: {area};

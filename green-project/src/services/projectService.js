@@ -32,11 +32,11 @@ export const projectServiceFactory = (token) => {
     const deleteProject = (projectId) => request.delete(`${baseUrl}/${projectId}`);
     
 
-    const addPlants = async (plantId, data) => {
-        const result = await request.post(`${baseUrl}/${plantId}/plants`, data);
+    // const addPlants = async (plantId, data) => {
+    //     const result = await request.post(`${baseUrl}/${plantId}/plants`, data);
     
-        return result;
-    };
+    //     return result;
+    // };
 
 
     return {

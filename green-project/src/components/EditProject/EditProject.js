@@ -32,7 +32,7 @@ export const EditProject = ({
                     </div>
                     <div className={styles["form-group"]}>
                         <label htmlFor="creator">Decor creator</label>
-                        <input type="text" name="creatorName" value={editIdeaForm.creatorName} onChange={onProjectChangedHandler} id="creator" placeholder="Decor creator" />
+                        <input type="text" name="creator" value={editIdeaForm.creatorName} onChange={onProjectChangedHandler} id="creator" placeholder="Decor creator" />
                     </div>
                     <div className={styles["form-group"]}>
                         <label htmlFor="designStage">Design stage</label>
