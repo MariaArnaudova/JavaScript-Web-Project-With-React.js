@@ -37,6 +37,10 @@
     background: linear-gradient(0deg, rgba(35, 86, 60, 0.36746036305147056) 100%, rgba(15, 56, 45, 0.10415504092261907) 100%);
 }
 
+.details-info{
+    height: auto;
+}
+
 .project-proba {
     position: relative;
     width: 100%;
@@ -118,4 +122,9 @@
     align-items: center;
     margin: 0 auto;
 }
+
+.plant{
+    width: 40%;
+height: auto;
+    }
 

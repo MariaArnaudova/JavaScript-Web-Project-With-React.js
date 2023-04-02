@@ -13,8 +13,11 @@ export const ProjectItem = ({
 }) => {
 
     const { isAuthenticated } = useContext(AuthContext);
+  
 
     return (
+    <>
+  
         <div className={styles["project-info"]}>
             <div className={styles["image-info"]}>
                 <img className={styles["list-img"]} src={imageUrl} alt="" />
@@ -40,5 +43,10 @@ export const ProjectItem = ({
                 </div>
             </div>
         </div>
+
+        {/* <Routes>
+            <Route  path='/projects/:projectId/add-plants' element={<AddPlants  project={project} onPlantSubmit={onPlantSubmit}/>} />
+        </Routes> */}
+        </>
     )
 }

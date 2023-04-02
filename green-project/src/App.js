@@ -4,6 +4,7 @@ import { AuthContext } from './contexts/AuthContext';
 
 import { authServiceFactory } from './services/authService';
 import { projectServiceFactory } from './services/projectService';
+import { plantServiceFactory } from './services/plantService';
 
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
@@ -35,7 +36,7 @@ function App() {
         plants: '',
     });
 
-    const [addPlantsProject, setAddPlants] = useState([]);
+    const [addPlantsProject, setAddPlantsProject] = useState({});
 
     const [auth, setAuth] = useState({});
     const authService = authServiceFactory(auth.accessToken);
@@ -126,9 +127,8 @@ function App() {
 
     const onAddPlantsClick = async (projectId) => {
         const addPlantsProject = await projectService.getOne(projectId);
-        setAddPlants(addPlantsProject)
+        setAddPlantsProject(addPlantsProject)
         navigate(`/projects/${projectId}/add-plants`);
-        // navigate('/add-plants');
     }
 
     const context = {

@@ -1,34 +1,56 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import styles from './AddPlants.module.css';
-import { useForm } from "../../hook/useForm";
 
 import { plantServiceFactory } from '../../services/plantService';
+import { projectServiceFactory } from '../../services/projectService';
 import { AuthContext } from '../../contexts/AuthContext';
+import { NewPlants } from '../NewPlants/NewPlants.js';
+
+
 
 export const AddPlants = ({
-    addPlantsProject
+    addPlantsProject,
+    addPlants
 }) => {
-    const { userId, token } = useContext(AuthContext);
+    const [project, setProject] = useState({});
+
+    const { token } = useContext(AuthContext);
 
     const { projectId } = useParams();
-    console.log(projectId)
     const navigate = useNavigate();
     const plantService = plantServiceFactory(token);
+    const projectService = projectServiceFactory(token);
 
-    const [plants, setPlants] = useState([]);
-   
+
+    useEffect(() => {
+        Promise.all([
+            projectService.getOne(projectId),
+            plantService.getAll(projectId)
+        ])
+            .then(([projectData, newPlants]) => {
+                setProject({
+                    ...projectData,
+                    newPlants,
+                });
+            });
+
+        console.log(project.newPlants)
+
+    }, [projectId ])
+
     const onPlantSubmit = async (plantsValues) => {
-        const addedPlants =await plantService.create(projectId, plantsValues.typePlant);
+        const addedPlants = await plantService.create(projectId, plantsValues.typePlant);
         console.log(addedPlants)
-        setPlants(state => [...state, addedPlants]);
-        navigate('/projects')
+        setProject(state => ({
+            ...state,
+            newPlants: [...state.newPlants, addedPlants],
+        }));
+        console.log(project.newPlants)
+        // navigate(`/projects/${projectId}/add-plants`)
     };
 
-    const { values, changeHandler, onSubmit } = useForm({
-        typePlant:''
-    }, onPlantSubmit);
-
+    console.log(project)
     return (
         <section className={styles["plants"]}>
             <div className={styles["plants-container"]}>
@@ -38,43 +60,54 @@ export const AddPlants = ({
                     <div className={styles["project-details-image"]}>
                         <div className={styles["project-proba"]}>
 
-                            <img className={styles["details-image"]} src={addPlantsProject.imageUrl} />
+                            <img className={styles["details-image"]} src={project.imageUrl} />
                         </div>
                     </div>
                     <div className={styles["details-info"]}>
                         <h2>Add plants</h2>
                         <p className={styles["details-descriptions"]}>Description:
-                            {addPlantsProject.description}
+                            {project.description}
                         </p>
                         <p className={styles["details-type"]}>
-                            Decor type:  {addPlantsProject.type};
+                            Decor type:  {project.type};
                         </p>
                         <p className={styles["details-creator"]}>
-                            Decor creator: {addPlantsProject.creator}
+                            Decor creator: {project.creator}
                         </p>
                         <p className={styles["details-area"]}>
-                            Decor area: {addPlantsProject.area}
+                            Decor area: {project.area}
                         </p>
                         <p className={styles["details-designStage"]}>
-                            Design stage: {addPlantsProject.designStage}
+                            Design stage: {project.designStage}
                         </p>
                         <p className={styles["plants"]}>
-                            Decor plants: {addPlantsProject.plants}
-
+                            Decor plants: {project.plants}
                         </p>
-                        <div className={styles["form-group form-add-plants"]}>
-                            {/* <label htmlFor="plants">Decor plants</label> */}
-                            {/* <!-- <input className={styles["plant-input" type="text" name="plants" id="plants" placeholder="Plant name"> --> */}
-                            <form onSubmit={onSubmit} method="POST" action="">
-                                <textarea name="typePlant" className={styles["textarea"]}
-                                 onChange={changeHandler}
-                                 value={values.typePlant}
-                                //  value={plantsValues.typePlant}
-                                  id="plants" cols="20" rows="1"></textarea>
-                                <button type="submit" className={styles["add"]}>Add</button>
-                            </form>
 
+                        <div>
+                            <h4>New plants:</h4>
+                            {/* <ul>
+                        
+                                {project.newPlants && project.newPlants.map(x => (
+                                    <li key={x._id} className="plant"> */}
+                                        {/* <p>{x.author.email}: {x.plant}</p> */}
+                                        {/* <p>{x.plant}</p>
+                                    </li>,
+                                    console.log(x.plant)
+                                ))}
+                            </ul> */}
+
+                            {project.newPlants && project.newPlants.map(x => (                                                                        
+                                        <p>{x.plant}</p>
+                                ))}
+
+                            {!project.newPlants?.length && (
+                                <p className="no-plants">No new plants.</p>
+                            )}
                         </div>
+
+                        <NewPlants onPlantSubmit={onPlantSubmit} />
+
                     </div>
                 </div>
             </div>

@@ -17,8 +17,8 @@ export const plantServiceFactory = (token) => {
         return plants;
     };
 
-    const create = async (projectId, plants) => {
-        const result = await request.post(baseUrl, { projectId, plants });
+    const create = async (projectId, plant) => {
+        const result = await request.post(baseUrl, { projectId, plant });
 
         return result;
     };
