@@ -56,13 +56,10 @@
 } */
 
 .form-group input {
-    display: flex;
-    justify-content: center;
+ align-items: center;
     padding: 0 12px;
     font-size: small;
 }
-
-
 
 .button-idea {
     margin-top: 10px;
@@ -73,3 +70,15 @@
     color: rgb(253, 7, 7);
     font-size:small;
 }
+
+.form-add-plants{
+    display: flex; /* Set the parent container to flex */
+  justify-content: center; /* Center the child elements horizontally */
+  align-items: center; /* Center the child elements vertically */
+  flex-direction: column;
+}
+
+.textarea{
+    border-radius: 10px;
+}
+
