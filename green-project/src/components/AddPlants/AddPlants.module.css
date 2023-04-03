@@ -109,6 +109,13 @@
     margin-top: 30px;
 } */
 
+.plant-tittle-info{
+    margin-top: 15px;
+   font-size: 28px;
+   text-align: center;
+   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+
 .add {
     padding: 0.1rem 2rem;
 }

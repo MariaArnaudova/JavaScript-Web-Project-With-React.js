@@ -62,10 +62,8 @@ export const AddPlants = ({
                         </div>
                     </div>
                     <div className={styles["details-info"]} style={{ overflow: 'auto' }}>
-                        <h2>Add plants</h2>
-                        <p className={styles["details-descriptions"]}>Description:
-                            {project.description}
-                        </p>
+                        <h3 className={styles["plant-tittle-info"]}>Add plants</h3>
+                        <p className={styles["details-descriptions"]}>Description: {project.description}</p>
                         <p className={styles["details-type"]}>
                             Decor type:  {project.type};
                         </p>
