@@ -10,8 +10,6 @@ import { NewPlants } from '../NewPlants/NewPlants.js';
 
 
 export const AddPlants = ({
-    addPlantsProject,
-    addPlants
 }) => {
     const [project, setProject] = useState({});
 
@@ -37,7 +35,7 @@ export const AddPlants = ({
 
         console.log(project.newPlants)
 
-    }, [projectId ])
+    }, [projectId])
 
     const onPlantSubmit = async (plantsValues) => {
         const addedPlants = await plantService.create(projectId, plantsValues.typePlant);
@@ -63,7 +61,7 @@ export const AddPlants = ({
                             <img className={styles["details-image"]} src={project.imageUrl} />
                         </div>
                     </div>
-                    <div className={styles["details-info"]}>
+                    <div className={styles["details-info"]} style={{ overflow: 'auto' }}>
                         <h2>Add plants</h2>
                         <p className={styles["details-descriptions"]}>Description:
                             {project.description}
@@ -85,21 +83,15 @@ export const AddPlants = ({
                         </p>
 
                         <div>
-                            <h4>New plants:</h4>
-                            {/* <ul>
-                        
+                            <h4 className={styles['newPlants']}>New plants:</h4>
+                            <ul className={styles["plantsList"]}>
                                 {project.newPlants && project.newPlants.map(x => (
-                                    <li key={x._id} className="plant"> */}
-                                        {/* <p>{x.author.email}: {x.plant}</p> */}
-                                        {/* <p>{x.plant}</p>
-                                    </li>,
-                                    console.log(x.plant)
-                                ))}
-                            </ul> */}
-
-                            {project.newPlants && project.newPlants.map(x => (                                                                        
+                                    <li key={x._id} className="plant">
                                         <p>{x.plant}</p>
+                                    </li>
                                 ))}
+                            </ul>
+
 
                             {!project.newPlants?.length && (
                                 <p className="no-plants">No new plants.</p>

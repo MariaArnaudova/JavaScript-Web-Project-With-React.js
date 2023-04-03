@@ -152,8 +152,7 @@ function App() {
                         <Route path='/login' element={<Login />} />
                         <Route path='/logout' element={<Logout />} />
                         <Route path='/register' element={<Register />} />
-                        <Route path='/projects/:projectId/add-plants' element={<AddPlants
-                            addPlantsProject={addPlantsProject} />} />
+                        <Route path='/projects/:projectId/add-plants' element={<AddPlants/>} />
                         <Route path='/create-project' element={<AddProject onCreateProjectSubmit={onCreateProjectSubmit} />} />
                         <Route path='/projects' element={<Projects
                             projects={projects}
