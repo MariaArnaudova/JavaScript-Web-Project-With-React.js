@@ -40,18 +40,18 @@ export const AddProject = ({
 
         const value = e.target.value;
         const errors = {};
-        if (e.target.name === 'type'   && value.length < 3) {
+        if (e.target.name === 'type' && value.length < 3) {
             errors.type = 'Field is required';
-        } 
+        }
         if (e.target.name === 'description' && value.length < 3) {
             errors.description = 'Field is required';
-        } 
+        }
         if (e.target.name === 'creator' && value.length < 3) {
             errors.creator = 'Field is required';
-        } 
+        }
         if (e.target.name === 'designStage' && value.length < 3) {
             errors.designStage = 'Field is required';
-        } 
+        }
         if (e.target.name === 'imageUrl' && value.length < 3) {
             errors.imageUrl = 'Field is required';
         }
@@ -63,6 +63,16 @@ export const AddProject = ({
         }
         setFormErros(errors);
     };
+
+    let isTextAreaEmpty = true;
+
+    const emptyValidation = (value) => {
+        const isError = Object.values(value).some(v => v ===false);
+        if (isError) {
+            isTextAreaEmpty=false;
+        }
+        return isTextAreaEmpty;
+    }
 
     return (
 
@@ -76,89 +86,92 @@ export const AddProject = ({
                     <div className={styles["form-group"]}>
                         <label htmlFor="description">Description</label>
                         <input className={styles["description"]} value={values.description} onChange={onChangeHandler}
-                         type="text" name="description" id="description" placeholder="Description"
-                         onBlur={formValidate}
-                         style={formErrors.description ? { borderColor: "red" } : {}} />                   
+                            type="text" name="description" id="description" placeholder="Description"
+                            onBlur={formValidate}
+                            style={formErrors.description ? { borderColor: "red" } : {}} />
                     </div>
                     {formErrors.description &&
-                                    <p className={styles["form-error"]} >
-                                        {formErrors.description}
-                                    </p>
-                                }
+                        <p className={styles["form-error"]} >
+                            {formErrors.description}
+                        </p>
+                    }
 
                     <div className={styles["form-group"]}>
                         <label htmlFor="type">Decor type</label>
-                        <input type="text" value={values.type} onChange={onChangeHandler} 
-                        name="type" id="type" placeholder="Decor type" 
-                        onBlur={formValidate}
-                        style={formErrors.type ? { borderColor: "red" } : {}}/>                    
+                        <input type="text" value={values.type} onChange={onChangeHandler}
+                            name="type" id="type" placeholder="Decor type"
+                            onBlur={formValidate}
+                            style={formErrors.type ? { borderColor: "red" } : {}} />
                     </div>
                     {formErrors.type &&
-                                    <p className={styles["form-error"]} >
-                                        {formErrors.type}
-                                    </p>
-                                }
+                        <p className={styles["form-error"]} >
+                            {formErrors.type}
+                        </p>
+                    }
                     <div className={styles["form-group"]}>
                         <label htmlFor="creator">Decor creator</label>
                         <input type="text" value={values.creator} onChange={onChangeHandler}
-                         name="creator" id="creator" placeholder="Decor creator" 
-                         onBlur={formValidate}
-                         style={formErrors.creator ? { borderColor: "red" } : {}}/>       
+                            name="creator" id="creator" placeholder="Decor creator"
+                            onBlur={formValidate}
+                            style={formErrors.creator ? { borderColor: "red" } : {}} />
                     </div>
                     {formErrors.creator &&
-                                    <p className={styles["form-error"]} >
-                                        {formErrors.creator}
-                                    </p>
-                                }
+                        <p className={styles["form-error"]} >
+                            {formErrors.creator}
+                        </p>
+                    }
                     <div className={styles["form-group"]}>
                         <label htmlFor="designStage">Design stage</label>
                         <input type="text" value={values.designStage} onChange={onChangeHandler}
-                         name="designStage" id="designStage" placeholder="Design stage"
-                         onBlur={formValidate}
-                         style={formErrors.designStage ? { borderColor: "red" } : {}} />                    
+                            name="designStage" id="designStage" placeholder="Design stage"
+                            onBlur={formValidate}
+                            style={formErrors.designStage ? { borderColor: "red" } : {}} />
                     </div>
                     {formErrors.designStage &&
-                                    <p className={styles["form-error"]} >
-                                        {formErrors.designStage}
-                                    </p>
-                                }
+                        <p className={styles["form-error"]} >
+                            {formErrors.designStage}
+                        </p>
+                    }
                     <div className={styles["form-group"]}>
                         <label htmlFor="imageUrl">Image url</label>
-                        <input type="text" value={values.imageUrl} onChange={onChangeHandler} 
-                        name="imageUrl" id="imageUrl" placeholder="Image Url"
-                        onBlur={formValidate}
-                        style={formErrors.imageUrl ? { borderColor: "red" } : {}} />
+                        <input type="text" value={values.imageUrl} onChange={onChangeHandler}
+                            name="imageUrl" id="imageUrl" placeholder="Image Url"
+                            onBlur={formValidate}
+                            style={formErrors.imageUrl ? { borderColor: "red" } : {}} />
                     </div>
                     {formErrors.imageUrl &&
-                                    <p className={styles["form-error"]} >
-                                        {formErrors.imageUrl}
-                                    </p>
-                                }
+                        <p className={styles["form-error"]} >
+                            {formErrors.imageUrl}
+                        </p>
+                    }
                     <div className={styles["form-group"]}>
                         <label htmlFor="area">Area</label>
                         <input type="text" value={values.area} onChange={onChangeHandler}
-                         name="area" id="area" placeholder="Area" 
-                         onBlur={formValidate}
-                         style={formErrors.area ? { borderColor: "red" } : {}}/>
+                            name="area" id="area" placeholder="Area"
+                            onBlur={formValidate}
+                            style={formErrors.area ? { borderColor: "red" } : {}} />
                     </div>
                     {formErrors.area &&
-                                    <p className={styles["form-error"]} >
-                                        {formErrors.area}
-                                    </p>
-                                }
+                        <p className={styles["form-error"]} >
+                            {formErrors.area}
+                        </p>
+                    }
                     <div className={styles["form-group"]}>
                         <label htmlFor="plants">Decor plants</label>
-                        <input type="text" value={values.plants} onChange={onChangeHandler} 
-                        name="plants" id="plants" placeholder="Decor plants" 
-                        onBlur={formValidate}
-                        style={formErrors.plants ? { borderColor: "red" } : {}}/>    
+                        <input type="text" value={values.plants} onChange={onChangeHandler}
+                            name="plants" id="plants" placeholder="Decor plants"
+                            onBlur={formValidate}
+                            style={formErrors.plants ? { borderColor: "red" } : {}} />
                     </div>
                     {formErrors.plants &&
-                                    <p className={styles["form-error"]} >
-                                        {formErrors.plants}
-                                    </p>
-                                }
-                    <button className={styles["button-idea"]} type="submit">Add Idea</button>
+                        <p className={styles["form-error"]} >
+                            {formErrors.plants}
+                        </p>
+                    }
+                    <button className={styles["button-idea"]} 
+                    onClick={() => emptyValidation(values)}     
+                               
+                    type="submit">Add Idea</button>
                 </form>
             </div>
 

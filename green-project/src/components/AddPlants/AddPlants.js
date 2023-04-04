@@ -33,22 +33,17 @@ export const AddPlants = ({
                 });
             });
 
-        console.log(project.newPlants)
-
     }, [projectId])
 
     const onPlantSubmit = async (plantsValues) => {
         const addedPlants = await plantService.create(projectId, plantsValues.typePlant);
-        console.log(addedPlants)
         setProject(state => ({
             ...state,
             newPlants: [...state.newPlants, addedPlants],
         }));
-        console.log(project.newPlants)
-        // navigate(`/projects/${projectId}/add-plants`)
+        navigate(`/projects/`)
     };
 
-    console.log(project)
     return (
         <section className={styles["plants"]}>
             <div className={styles["plants-container"]}>
