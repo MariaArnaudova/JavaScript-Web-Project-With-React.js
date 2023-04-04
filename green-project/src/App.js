@@ -17,7 +17,7 @@ import { Projects } from './components/Projects/Projects';
 import { Details } from './components/Details/Details';
 import { EditProject } from './components/EditProject/EditProject';
 import { AddPlants } from './components/AddPlants/AddPlants';
-
+import { RouteGuard } from './components/common/RouteGuard';
 // const baseUrl = 'http://localhost:3030/data/projects';
 
 function App() {
@@ -35,6 +35,8 @@ function App() {
         area: '',
         plants: '',
     });
+    const[loginServerError, setServerError] = useState(null);
+    const[registerServerError, setRegisterServerError] = useState(null);
 
     const [addPlantsProject, setAddPlantsProject] = useState({});
 
@@ -57,8 +59,8 @@ function App() {
 
     const onDetailsClick = async (projectId) => {
         const detailProject = await projectService.getOne(projectId);
-        //  console.log(detailProject);
         setSelectedProject(detailProject);
+        // navigate(`/projects/${projectId}`)
     };
 
     const onProjectDeleteClick = async (projectId) => {
@@ -71,7 +73,7 @@ function App() {
     const onEditClick = async (projectId) => {
         const editProject = await projectService.getOne(projectId);
         setEditIdeaForm(editProject)
-        navigate('/projects/:projectId/edit')
+        navigate(`/projects/${projectId}/edit`)
     }
 
     const onEditProjectSubmit = async (projectId, data) => {
@@ -88,6 +90,8 @@ function App() {
 
     const onProjectCloseClick = () => {
         setSelectedProject(null);
+        setServerError(null);
+        setRegisterServerError(null);
     }
 
     const onLoginSubmit = async (data) => {
@@ -99,6 +103,7 @@ function App() {
             navigate('/projects');
         } catch (error) {
             console.log('There is a problem');
+            setServerError(error.message);
         }
     };
 
@@ -114,6 +119,7 @@ function App() {
             navigate('/projects');
         } catch (error) {
             console.log('There is a problem');
+            setRegisterServerError(error.message)
         }
     }
     // const onDeleteToken = async () => {
@@ -149,11 +155,9 @@ function App() {
                 <main id="main-content">
                     <Routes>
                         <Route path='/' element={<Home />} />
-                        <Route path='/login' element={<Login />} />
+                    <Route path='/login' element={<Login  loginServerError={loginServerError}  onProjectCloseClick={onProjectCloseClick}/>} />
                         <Route path='/logout' element={<Logout />} />
-                        <Route path='/register' element={<Register />} />
-                        <Route path='/projects/:projectId/add-plants' element={<AddPlants/>} />
-                        <Route path='/create-project' element={<AddProject onCreateProjectSubmit={onCreateProjectSubmit} />} />
+                        <Route path='/register' element={<Register registerServerError={registerServerError} onProjectCloseClick={onProjectCloseClick}/>} />
                         <Route path='/projects' element={<Projects
                             projects={projects}
                             selectedProject={selectedProject}
@@ -163,14 +167,19 @@ function App() {
                             onProjectCloseClick={onProjectCloseClick}
                             onEditClick={onEditClick}
                             onAddPlantsClick={onAddPlantsClick}
-                        />} />
+                            />} />
                         <Route path='/projects/:projectId' element={<Details />} />
-                        <Route path='/projects/:projectId/edit' element={<EditProject
-                            onProjectChangedHandler={onProjectChangedHandler}
-                            editIdeaForm={editIdeaForm}
-                            onEditProjectSubmit={onEditProjectSubmit}
-                        // editProject={editProject}
-                        />} />
+
+                        <Route element={<RouteGuard />}>
+                            <Route path='/projects/:projectId/add-plants' element={<AddPlants />} />
+                            <Route path='/create-project' element={<AddProject onCreateProjectSubmit={onCreateProjectSubmit} />} />
+                            <Route path='/projects/:projectId/edit' element={<EditProject
+                                onProjectChangedHandler={onProjectChangedHandler}
+                                editIdeaForm={editIdeaForm}
+                                onEditProjectSubmit={onEditProjectSubmit}
+                            />} />
+
+                        </Route>
                     </Routes>
                 </main>
                 <Footer />
