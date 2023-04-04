@@ -12,3 +12,5 @@ export const Logout = () => {
 
     return <Navigate to="/" /> 
 };
+
+
