@@ -43,10 +43,6 @@ export const ProjectItem = ({
                 </div>
             </div>
         </div>
-
-        {/* <Routes>
-            <Route  path='/projects/:projectId/add-plants' element={<AddPlants  project={project} onPlantSubmit={onPlantSubmit}/>} />
-        </Routes> */}
         </>
     )
 }
