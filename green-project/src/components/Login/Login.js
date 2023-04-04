@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from '../../contexts/AuthContext';
 
 import { useForm } from "../../hook/useForm";
+import { LoginModal } from "./LoginModal/LoginModal";
 
 const LoginFormKeys = {
     Email: 'email',
@@ -13,7 +14,8 @@ const LoginFormKeys = {
 
 
 export const Login = ({
-
+    loginServerError,
+    onProjectCloseClick,
 }) => {
 
     const [formErrors, setFormErros] = useState({
@@ -26,15 +28,15 @@ export const Login = ({
         [LoginFormKeys.Email]: '',
         [LoginFormKeys.Password]: '',
     }, onLoginSubmit);
- 
+
     const formValidate = (e) => {
- 
-        const value = e.target.value;   
+
+        const value = e.target.value;
         const errors = {};
 
         if (e.target.name === 'email' && (value.length < 3 || value.length > 20)) {
             errors.email = 'Email is not valid';
-        } 
+        }
 
         if (e.target.name === 'password' && (value.length < 3 || value.length > 20)) {
             errors.password = 'Password is not valid';
@@ -42,7 +44,6 @@ export const Login = ({
 
         setFormErros(errors);
     };
-
 
     return (
         <section className={styles["login"]}>
@@ -65,10 +66,10 @@ export const Login = ({
                         />
                     </div>
                     {formErrors.email &&
-                                    <p className={styles["form-error"]} >
-                                        {formErrors.email}
-                                    </p>
-                                }
+                        <p className={styles["form-error"]} >
+                            {formErrors.email}
+                        </p>
+                    }
                     <div className={styles["form-group"]}>
                         <label htmlFor="password">Password</label>
                         <input
@@ -83,10 +84,10 @@ export const Login = ({
                         />
                     </div>
                     {formErrors.password &&
-                                    <p className={styles["form-error"]}>
-                                        {formErrors.password}
-                                    </p>
-                                }
+                        <p className={styles["form-error"]}>
+                            {formErrors.password}
+                        </p>
+                    }
                     {/* <input type="submit" className={styles["button-idea"]} value="Login" /> */}
                     <button className={styles["button-idea"]}>Login</button>
                     <Link to="/register" className={styles["redirect-register"]} >If you don't have a registration click here</Link>
@@ -94,6 +95,10 @@ export const Login = ({
 
             </div>
 
+            {loginServerError && <LoginModal
+                loginServerError={loginServerError}
+                onProjectCloseClick={onProjectCloseClick}
+            />}
         </section>
     )
 }

@@ -5,7 +5,12 @@ import { useForm } from '../../hook/useForm';
 import { AuthContext } from '../../contexts/AuthContext';
 import styles from './Register.module.css';
 
-export const Register = () => {
+import { RegisterModal } from "./RegisterModal/RegisterModal";
+
+export const Register = ({
+    registerServerError,
+    onProjectCloseClick
+}) => {
 
     const [formErrors, setFormErros] = useState({
         email: '',
@@ -106,7 +111,10 @@ export const Register = () => {
                     <Link to="/login" className={styles["redirect-login"]} >If you have a registration click here</Link>
                 </form>
             </div>
-
+            {registerServerError && <RegisterModal
+                registerServerError={registerServerError}
+                onProjectCloseClick={onProjectCloseClick}
+            />}
         </section>
     )
 };

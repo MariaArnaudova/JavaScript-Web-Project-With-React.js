@@ -1,0 +1,40 @@
+ /* Delete modal */
+ .register-modal {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(0deg, rgba(27,51,35,0.35) 0%, rgba(15,56,45,0.5887488784576331) 100%);
+}
+
+.register-div {
+    z-index: 10;
+    width: 30%;
+    height: 10%;
+    text-align: center;
+    border: 1px solid rgb(25, 43, 43);
+    border-radius: 6px;;
+    padding: 30px 20px;
+    gap: 10px;
+    background-color: rgb(230, 240, 235);
+    box-shadow: -2px 3px 23px 23px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: -2px 3px 23px 23px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: -2px 3px 23px 23px rgba(0, 0, 0, 0.35);
+}
+
+.register-preview{
+    color: chocolate;
+}
+
+.button-idea,
+.close {
+    margin-top: 20px;
+    padding: 0px 15px;
+}
+.close{
+    margin-left: 20px;
+}
