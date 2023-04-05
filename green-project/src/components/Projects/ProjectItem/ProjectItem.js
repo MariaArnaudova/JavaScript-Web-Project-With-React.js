@@ -13,7 +13,6 @@ export const ProjectItem = ({
 }) => {
 
     const { isAuthenticated } = useContext(AuthContext);
-  
 
     return (
     <>
@@ -31,13 +30,12 @@ export const ProjectItem = ({
                         Decor type: {type}
                     </p>
                     <p className={styles["details-creator"]}>
-                        Decor creator: {creator} ;
+                        Decor creator: {creator};
                     </p>
                     <a href="#top">
                         <button className={styles["details-button"]} onClick={() => onDetailsClick(_id)}>Details</button>
 
                         {isAuthenticated && (<button type="button" className={styles["add"]} onClick={() => onAddPlantsClick(_id)}>Add Plants</button>)}
-
                     </a>
 
                 </div>

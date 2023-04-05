@@ -41,7 +41,7 @@ export const AddPlants = ({
             ...state,
             newPlants: [...state.newPlants, addedPlants],
         }));
-        navigate(`/projects/`)
+        navigate(`/projects`)
     };
 
     return (
