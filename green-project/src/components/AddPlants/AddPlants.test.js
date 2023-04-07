@@ -170,15 +170,36 @@ describe('Add plants Component', () => {
         const contextValue = {
             token: 'test value',
         };
-        
+
         render(
             <MockContextProvider value={contextValue}>
                 <BrowserRouter>
-                    <AddPlants/>
+                    <AddPlants />
                 </BrowserRouter>
             </MockContextProvider>
         );
         expect(screen.queryByText(`No new plants.`)).toBeInTheDocument();
     });
+
+    // test('displays the fetched plant in the input field', async () => {
+    //     const contextValue = {
+    //         token: 'test value',
+    //     };
+    //     const project = {
+    //         newPlants: [{
+    //             plant: 'Strelicia'
+    //         }]
+    //     };
+
+    //     render(
+    //         <MockContextProvider value={contextValue}>
+    //             <BrowserRouter>
+    //                 <AddPlants project={project} />
+    //             </BrowserRouter>
+    //         </MockContextProvider>);
+
+    //     // const nameInput = screen.getElementsByClassName('plant');
+    //     expect(screen.getByRole('li')).toBeInTheDocument('Strelicia');
+    // });
 });
 
