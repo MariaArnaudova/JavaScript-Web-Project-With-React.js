@@ -1,23 +1,23 @@
 # JavaScript-Web-Project-With-React.js
-Green in/Green out - React.js Project
+#Green in/Green out - React.js Project
 Green IN/Green OUT  is a site for plant lovers and landscaping project creators.
 
-1. Application Structure
+#1. Application Structure
 The application has:
 • Public Part (Accessible without authentication)
 • Private Part (Available for Registered Users)
-1.1 Public Part
+#1.1 Public Part
 The public part of the project is visible without authentication. This public part is the application home page, the user login, user registration form, and projects collection.
 Every user has the ability to visit:
 o Projects – list of all created records of projects
 o Details – information about a specific project
 - A Guest can access basic website information (projects, details), but not the functional activities.
-1.2 Private Part (User Area)
+#1.2 Private Part (User Area)
 In the web application after successful login:
 o	All Logged in users can create a project. Also, those who are inspired by a project can add other types of plants to it, as an idea for future reconstruction.
 o	All Logged in (author) users can use the Edit / Delete functionality in their records.
 
-2. About the project:
+#2. About the project:
 • Has used HTML & CSS structures and JS
 • For the client-side has used React.js
 • For back-end has used softuni-practice-server
