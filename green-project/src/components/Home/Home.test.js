@@ -33,16 +33,5 @@ describe('Home Component', () => {
         )
         expect(screen.queryByText(type)).toBeInTheDocument();
     });
-
-    // test('Show title info', () => {
-
-    //     render(
-    //         <BrowserRouter>
-    //             <Home />
-    //         </BrowserRouter>
-    //     )
-    //     expect(getByRole('p')).toBeInTheDocument();
-    // });
-
 });
 

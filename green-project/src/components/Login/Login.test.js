@@ -3,8 +3,6 @@ import { Login } from "./Login";
 import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event'
 
-import { LoginModal } from './LoginModal/LoginModal';
-
 import { AuthContext } from '../../contexts/AuthContext';
 
 const MockContextProvider = ({ value, children }) => (

@@ -65,8 +65,7 @@ describe('Add project Component', () => {
 
         expect(screen.queryByText('Decor creator')).toBeInTheDocument();
     });
-
-    
+  
     test('Show Design stage', () => {
 
         const contextValue = {
@@ -139,5 +138,5 @@ describe('Add project Component', () => {
         expect(screen.queryByText('Decor plants')).toBeInTheDocument();
     });
 
-})
+});
 

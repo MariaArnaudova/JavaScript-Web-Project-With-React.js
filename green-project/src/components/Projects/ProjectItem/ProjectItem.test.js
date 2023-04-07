@@ -13,7 +13,6 @@ const MockContextProvider = ({ value, children }) => (
 
 describe('Project item Component', () => {
 
-
     test('Show imageUrl', () => {
 
         const contextValue = {

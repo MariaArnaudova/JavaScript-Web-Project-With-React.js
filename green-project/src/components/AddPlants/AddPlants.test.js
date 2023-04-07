@@ -147,7 +147,6 @@ describe('Add plants Component', () => {
         );
         expect(screen.queryByText(`Decor plants:`)).toBeInTheDocument();
     });
-    //New plants:
 
     test('New plants', async () => {
 

@@ -1,8 +1,6 @@
 import { render, screen, fireEvent  } from '@testing-library/react';
 import { LoginModal } from "./LoginModal";
 import { BrowserRouter } from 'react-router-dom';
-import { useState } from "react";
-import userEvent from '@testing-library/user-event'
 
 import { AuthContext } from '../../../contexts/AuthContext';
 
@@ -70,4 +68,4 @@ describe('Login Component', () => {
         fireEvent.click(button);
         expect(onProjectCloseClick).toHaveBeenCalled();
     });
-})
+});

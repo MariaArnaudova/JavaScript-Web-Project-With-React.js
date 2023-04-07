@@ -31,7 +31,6 @@ describe('Logout Component', () => {
         expect(global.window.location.pathname).toContain(`/`);
     });
 
-
     // test('calls onLogout from AuthContext on mount', () => {
     //     const onLogoutSpy = jest.fn();
     //     const authValue = { onLogout: onLogoutSpy };

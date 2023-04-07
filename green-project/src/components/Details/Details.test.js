@@ -211,4 +211,4 @@ describe('Details item Component', () => {
         expect(screen.queryByText(`Close`)).toBeInTheDocument();
     });
 
-})
+});

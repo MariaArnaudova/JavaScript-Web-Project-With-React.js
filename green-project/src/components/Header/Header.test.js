@@ -132,5 +132,4 @@ describe('Header Component', () => {
         )
         expect(screen.queryByText(register)).toBeInTheDocument();
     });
-
-})
+});

@@ -20,7 +20,6 @@ const editIdeaForm = {
     description: "Vertical garden in interior",
     area: "Interior",
     plants: "Many plants"
-
 }
 
 describe('Edit project Component', () => {

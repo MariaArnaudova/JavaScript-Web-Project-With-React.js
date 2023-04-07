@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { Footer } from "./Footer";
 import { BrowserRouter } from 'react-router-dom';
-import userEvent from '@testing-library/user-event'
 
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -28,6 +27,6 @@ describe('Footer component', () => {
         );
         expect(screen.queryByText(footer)).toBeInTheDocument();
 
-    })
-})   
+    });
+});   
 
