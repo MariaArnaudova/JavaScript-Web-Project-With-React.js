@@ -12,7 +12,7 @@ export const LoginModal = ({
 
         <div className={styles["login-div"]}>
             <p className={styles["login-preview"]}> {loginServerError}</p>
-            <button type="button" className={styles["close"]} onClick={() => onProjectCloseClick()}>Close</button>
+            <button type="button" data-testid="close-button" className={styles["close"]} onClick={() => onProjectCloseClick()}>Close</button>
         </div>
 
     </section>

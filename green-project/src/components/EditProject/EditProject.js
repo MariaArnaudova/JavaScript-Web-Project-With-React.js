@@ -21,7 +21,7 @@ export const EditProject = ({
 
             <div className={styles["add-projects-div"]}>
                 <h2 className={styles["add-projects-title"]}>Edit Green Idea</h2>
-                <form className={styles["add-projects-form"]} onSubmit={onSubmit} method="POST"  action="">
+                <form   className={styles["add-projects-form"]} onSubmit={onSubmit} method="POST"  action="">
                     <div className={styles["form-group"]}>
                         <label htmlFor="description">Description</label>
                         <input className={styles["description"]} value={editIdeaForm.description} onChange={onProjectChangedHandler} type="text" name="description" id="description" placeholder="Description" />
@@ -50,7 +50,7 @@ export const EditProject = ({
                         <label htmlFor="plants">Decor plants</label>
                         <input type="text" name="plants" value={editIdeaForm.plants} onChange={onProjectChangedHandler} id="plants" placeholder="Decor plants" />
                     </div>
-                    <button className={styles["button-idea"]} type="submit">Edit Idea</button>
+                    <button data-testid="custom-element" className={styles["button-idea"]} type="submit">Edit Idea</button>
                 </form>
             </div>
 

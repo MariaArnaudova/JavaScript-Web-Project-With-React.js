@@ -53,7 +53,7 @@ export const Login = ({
                 <p className={styles["login-preview"]}>Log in to your profile and add your new project</p>
                 <form className={styles["login-form"]} onSubmit={onSubmit} method="POST">
                     <div className={styles["form-group"]}>
-                        <label htmlFor="email">Email</label>
+                        <label className={styles["email-group"]} htmlFor="email">Email</label>
                         <input
                             className={styles["email"]}
                             type="text" name={LoginFormKeys.Email}
@@ -73,6 +73,7 @@ export const Login = ({
                     <div className={styles["form-group"]}>
                         <label htmlFor="password">Password</label>
                         <input
+                            className={styles["password"]}
                             type="password"
                             name={LoginFormKeys.Password}
                             id="password"
@@ -89,8 +90,8 @@ export const Login = ({
                         </p>
                     }
                     {/* <input type="submit" className={styles["button-idea"]} value="Login" /> */}
-                    <button className={styles["button-idea"]}>Login</button>
-                    <Link to="/register" className={styles["redirect-register"]} >If you don't have a registration click here</Link>
+                    <button data-testid="my-button"  className={styles["button-idea"]}>Login</button>
+                    <Link to="/register"  className={styles["redirect-register"]} >If you don't have a registration click here</Link>
                 </form>
 
             </div>
