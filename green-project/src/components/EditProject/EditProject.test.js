@@ -34,7 +34,7 @@ describe('Edit project Component', () => {
         render(
             <MockContextProvider value={contextValue}>
                 <BrowserRouter>
-                    <EditProject editIdeaForm={editIdeaForm} onProjectChangedHandler={onProjectChangedHandler}/>
+                    <EditProject editIdeaForm={editIdeaForm} onProjectChangedHandler={onProjectChangedHandler} />
                 </BrowserRouter>
             </MockContextProvider>
         )
@@ -52,7 +52,7 @@ describe('Edit project Component', () => {
         render(
             <MockContextProvider value={contextValue}>
                 <BrowserRouter>
-                    <EditProject editIdeaForm={editIdeaForm} onProjectChangedHandler={onProjectChangedHandler}/>
+                    <EditProject editIdeaForm={editIdeaForm} onProjectChangedHandler={onProjectChangedHandler} />
                 </BrowserRouter>
             </MockContextProvider>
         )
@@ -69,7 +69,7 @@ describe('Edit project Component', () => {
         render(
             <MockContextProvider value={contextValue}>
                 <BrowserRouter>
-                    <EditProject editIdeaForm={editIdeaForm} onProjectChangedHandler={onProjectChangedHandler}/>
+                    <EditProject editIdeaForm={editIdeaForm} onProjectChangedHandler={onProjectChangedHandler} />
                 </BrowserRouter>
             </MockContextProvider>
         )
@@ -87,7 +87,7 @@ describe('Edit project Component', () => {
         render(
             <MockContextProvider value={contextValue}>
                 <BrowserRouter>
-                    <EditProject editIdeaForm={editIdeaForm} onProjectChangedHandler={onProjectChangedHandler}/>
+                    <EditProject editIdeaForm={editIdeaForm} onProjectChangedHandler={onProjectChangedHandler} />
                 </BrowserRouter>
             </MockContextProvider>
         )
@@ -137,7 +137,7 @@ describe('Edit project Component', () => {
             isAuthenticated: 'test value',
         };
 
-        const onProjectChangedHandler=jest.fn();
+        const onProjectChangedHandler = jest.fn();
         render(
             <MockContextProvider value={contextValue}>
                 <BrowserRouter>
@@ -154,7 +154,7 @@ describe('Edit project Component', () => {
         const contextValue = {
             isAuthenticated: 'test value',
         };
-        const onProjectChangedHandler=jest.fn();
+        const onProjectChangedHandler = jest.fn();
         render(
             <MockContextProvider value={contextValue}>
                 <BrowserRouter>
@@ -171,11 +171,11 @@ describe('Edit project Component', () => {
         const contextValue = {
             isAuthenticated: 'test value',
         };
-        const onProjectChangedHandler=jest.fn();
+        const onProjectChangedHandler = jest.fn();
         render(
             <MockContextProvider value={contextValue}>
                 <BrowserRouter>
-                    <EditProject editIdeaForm={editIdeaForm} onProjectChangedHandler={onProjectChangedHandler}/>
+                    <EditProject editIdeaForm={editIdeaForm} onProjectChangedHandler={onProjectChangedHandler} />
                 </BrowserRouter>
             </MockContextProvider>
         )
@@ -191,7 +191,7 @@ describe('Edit project Component', () => {
 
         const onSubmit = jest.fn();
         const onEditProjectSubmit = jest.fn();
-        const onProjectChangedHandler=jest.fn() ;
+        const onProjectChangedHandler = jest.fn();
         render(
             <MockContextProvider value={contextValue}>
                 <BrowserRouter>
