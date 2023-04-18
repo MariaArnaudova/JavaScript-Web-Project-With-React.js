@@ -30,4 +30,4 @@ In the web application after successful login:
 * Implemented client-side routing
 * Has written Unit Tests with JEST
 * Have applied error handling and data validation to avoid crashes when invalid data is entered.
-*The application has divided into components with separate CSS files.
+* The application has divided into components with separate CSS files.
